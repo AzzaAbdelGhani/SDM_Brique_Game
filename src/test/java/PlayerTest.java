@@ -14,7 +14,7 @@ public class PlayerTest {
     @Test
     public void checkStatusOfPlayer() {
         p.setActive(Boolean.TRUE);
-        assertFalse(p.IsActive());
+        assertTrue(p.IsActive());
 
     }
 
