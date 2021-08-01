@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="PlayerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-01T10:54:23" hostname="AZOZ" time="0.017">
+  <properties/>
+  <testcase name="checkNameAndColorAndActivity()" classname="PlayerTest" time="0.017"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
