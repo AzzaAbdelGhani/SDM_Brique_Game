@@ -12,11 +12,4 @@ public class PlayerTest {
         assertFalse(p.IsActive());
     }
 
-    @Test
-    public void checkStatusOfPlayer() {
-        p.setActive(Boolean.TRUE);
-        assertTrue(p.IsActive());
-
-    }
-
 }

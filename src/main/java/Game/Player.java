@@ -21,7 +21,7 @@ public class Player {
 
     //setters
     public void setName(String name){this.name = name;}
-    public void setColor(Piece_Color pieceColor){this.pieceColor = pieceColor;}
-    public void setActive(Boolean active) {this.active = active;}
+    protected void setColor(Piece_Color pieceColor){this.pieceColor = pieceColor;}
+    protected void setActive(Boolean active) {this.active = active;}
     public void setGraph(Graph graph) {this.graph = graph;}
 }
