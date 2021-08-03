@@ -15,6 +15,8 @@ public class Board {
     public void setPiece(int i, int j, Piece_Color color) { this.grid[i][j].setPieceColor(color);}
 
     //getters
+    public int getSize() { return size; }
+
     public Position getPos(int i, int j) { return this.grid[i][j];}
 
     public Pos_Color getPosColor(int i, int j) { return this.grid[i][j].getPosColor();}

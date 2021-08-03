@@ -1,12 +1,18 @@
 import Game.Board;
 import Game.Piece_Color;
-import Game.Pos_Color;
 import Game.Position;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
 public class BoardTest {
     private final Board board = new Board();
     private final Position pos = new Position(0,5);
+
+    @Test
+    public void checkSize()
+    {
+        assertEquals(board.getSize(), 15);
+    }
     @Test
     public void checkBoardRowIdxAndColIdx()
     {
