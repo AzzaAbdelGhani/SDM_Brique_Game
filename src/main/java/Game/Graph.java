@@ -18,4 +18,12 @@ public class Graph {
             Adjacency_List.add(i, new_list);
         }
     }
+    public int get_Index(int row, int col) {return (row*15 + col);}
+
+    public void add_node(int row, int col)
+    {
+        int idx = get_Index(row, col);
+        Adjacency_List.get(idx).add(idx);
+    }
+    
 }
