@@ -25,5 +25,20 @@ public class Graph {
         int idx = get_Index(row, col);
         Adjacency_List.get(idx).add(idx);
     }
+
+    public void printGraph()
+    {
+        System.out.println ("Adjacency List for the graph \n");
+        for (List<Integer> l : Adjacency_List)
+        {
+            if(!l.isEmpty()) {
+                for (int i = 0; i < l.size(); i++) {
+                    System.out.print("->" + l.get(i));
+                }
+                System.out.print("\n");
+            }
+        }
+    }
+
     
 }
