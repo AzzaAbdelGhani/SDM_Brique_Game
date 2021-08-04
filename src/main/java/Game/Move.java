@@ -22,12 +22,16 @@ public class Move {
     public int getY() { return this.y; }
 
     public boolean makeMove(int x, int y){
-        this.x = x;
-        this.y = y;
-        this.board.setPiece(x,y,currentPlayer.getColor());
-        this.currentPlayer.setActive(Boolean.FALSE);
-        this.otherPlayer.setActive(Boolean.TRUE);
-        return Boolean.TRUE;
+        if (this.board.isValidPos(x,y) && this.board.getPosFill(x,y) == Piece_Color.BLANK){
+            this.x = x;
+            this.y = y;
+            this.board.setPiece(x, y, currentPlayer.getColor());
+            this.currentPlayer.setActive(Boolean.FALSE);
+            this.otherPlayer.setActive(Boolean.TRUE);
+            return Boolean.TRUE;
+        }
+        else
+            return Boolean.FALSE;
     }
 
 }

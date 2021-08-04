@@ -14,7 +14,7 @@ public class MoveTest {
     @Test
     public void checkMakeMove()
     {
-        move.makeMove(0,5);
+        assertTrue(move.makeMove(0,5));
         assertEquals(this.board.getPosFill(0,5), Piece_Color.BLACK);
         assertFalse(this.P1.IsActive());
         assertTrue(this.P2.IsActive());
@@ -22,8 +22,18 @@ public class MoveTest {
     @Test
     public void checkXandY()
     {
-        move.makeMove(1, 2);
-        assertEquals(move.getX(), 1);
-        assertEquals(move.getY(), 2);
+        move.makeMove(5, 1);
+        assertEquals(move.getX(), 5);
+        assertEquals(move.getY(), 1);
+    }
+    @Test
+    public void checkInvalidMove()
+    {
+        assertFalse(move.makeMove(-1,5));
+        assertFalse(move.makeMove(16,7));
+        assertFalse(move.makeMove(4, -8));
+        assertFalse(move.makeMove(1, 19));
+        assertTrue(move.makeMove(1,2));
+        assertFalse(move.makeMove(1, 2));
     }
 }
