@@ -36,4 +36,13 @@ public class MoveTest {
         assertTrue(move.makeMove(1,2));
         assertFalse(move.makeMove(1, 2));
     }
+    @Test
+    public void checkEscortFilling()
+    {
+        move.makeMove(1, 1);
+        move.makeMove(2, 2);
+        move.fillEscorts();
+        assertEquals(board.getPosFill(1, 1), board.getPosFill(1, 2));
+        board.printBoard();
+    }
 }

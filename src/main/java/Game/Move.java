@@ -1,7 +1,5 @@
 package Game;
 
-import java.util.Scanner;
-
 public class Move {
     private Board board;
     private Player currentPlayer, otherPlayer;
@@ -14,20 +12,36 @@ public class Move {
     }
 
     //setters
-    public void setX(int x) { this.x = x; }
-    public void setY(int y) { this.y = y; }
+    protected void setX(int x) { this.x = x; }
+    protected void setY(int y) { this.y = y; }
 
     //getters
     public int getX() { return this.x; }
     public int getY() { return this.y; }
 
+    public void fillEscorts(){
+        Piece_Color current = currentPlayer.getColor();
+        Pos_Color color = board.getPosColor(x, y);
+        int size = board.getSize();
+        if ( x != size-1 && y != size-1 ) {
+            if (current == board.getPosFill(x+1, y+1) && color == Pos_Color.LIGHT) { board.setPiece(x, y+1, current); }
+            if (current == board.getPosFill(x+1, y+1) && color == Pos_Color.DARK) { board.setPiece(x +1, y, current); }
+        }
+        if ( x != 0 && y != 0 ){
+            if (current == board.getPosFill(x-1, y-1) && color == Pos_Color.LIGHT) { board.setPiece(x -1, y, current); }
+            if (current == board.getPosFill(x-1, y-1) && color == Pos_Color.DARK){ board.setPiece(x, y -1, current);}
+        }
+        if (x == size-1 && color == Pos_Color.DARK) { board.setPiece(x, y +1, current); }
+        
+    }
+
     public boolean makeMove(int x, int y){
-        if (this.board.isValidPos(x,y) && this.board.getPosFill(x,y) == Piece_Color.BLANK){
+        if (board.isValidPos(x,y) && board.getPosFill(x,y) == Piece_Color.BLANK){
             this.x = x;
             this.y = y;
-            this.board.setPiece(x, y, currentPlayer.getColor());
-            this.currentPlayer.setActive(Boolean.FALSE);
-            this.otherPlayer.setActive(Boolean.TRUE);
+            board.setPiece(x, y, currentPlayer.getColor());
+            currentPlayer.setActive(Boolean.FALSE);
+            otherPlayer.setActive(Boolean.TRUE);
             return Boolean.TRUE;
         }
         else

@@ -7,4 +7,5 @@ public enum Piece_Color {
 
     private String pColor;
     Piece_Color(String s){this.pColor = s;}
+    public String getString() {return pColor;}
 }
