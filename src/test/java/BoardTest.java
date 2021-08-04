@@ -29,7 +29,5 @@ public class BoardTest {
     public void checkBoardPieceColor()
     {
         assertEquals(board.getPosFill(0,5), pos.getPieceColor());
-        board.setPiece(4,13,Piece_Color.BLACK);
-        assertEquals(board.getPosFill(4, 13), Piece_Color.BLACK);
     }
 }

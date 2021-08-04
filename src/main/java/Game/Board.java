@@ -12,7 +12,7 @@ public class Board {
         }
     }
     //setters
-    public void setPiece(int i, int j, Piece_Color color) { this.grid[i][j].setPieceColor(color);}
+    protected void setPiece(int i, int j, Piece_Color color) { this.grid[i][j].setPieceColor(color);}
 
     //getters
     public int getSize() { return size; }
@@ -22,5 +22,10 @@ public class Board {
     public Pos_Color getPosColor(int i, int j) { return this.grid[i][j].getPosColor();}
 
     public Piece_Color getPosFill(int i, int j) {return this.grid[i][j].getPieceColor();}
+
+    public Boolean isValidPos(int i, int j){
+        if (i < 0 || j < 0 || i >= size || j >= size) { return Boolean.FALSE; }
+        return Boolean.TRUE;
+    }
 
 }
