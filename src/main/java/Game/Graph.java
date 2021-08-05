@@ -6,7 +6,7 @@ import java.util.List;
 public class Graph {
     public final List<List<Integer>> Adjacency_List;
     private Piece_Color pieceColor;
-    private Board board;
+    private Board board = new Board();
 
     public Graph(Piece_Color pieceColor)
     {
@@ -24,6 +24,7 @@ public class Graph {
     {
         int idx = get_Index(row, col);
         Adjacency_List.get(idx).add(idx);
+        this.board.setPiece(row,col,this.pieceColor);
         check_neighbours(row, col, this.board);
     }
 
