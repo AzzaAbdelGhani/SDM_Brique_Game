@@ -24,12 +24,37 @@ public class Graph {
     {
         int idx = get_Index(row, col);
         Adjacency_List.get(idx).add(idx);
+        check_neighbours(row, col, this.board);
     }
 
     public void setEdge(int src, int des)
     {
         Adjacency_List.get(des).add(src);
         Adjacency_List.get(src).add(des);
+    }
+
+    public void check_neighbours(int row, int col, Board board)
+    {
+        if(board.isValidPos(row-1, col))
+        {
+            if ( this.pieceColor == board.getPosFill(row-1,col))
+                setEdge(get_Index(row,col), get_Index(row-1,col));
+        }
+        if(board.isValidPos(row+1, col))
+        {
+            if ( this.pieceColor == board.getPosFill(row+1,col))
+                setEdge(get_Index(row,col), get_Index(row+1,col));
+        }
+        if(board.isValidPos(row, col-1))
+        {
+            if ( this.pieceColor == board.getPosFill(row,col-1))
+                setEdge(get_Index(row,col), get_Index(row,col-1));
+        }
+        if(board.isValidPos(row, col+1))
+        {
+            if ( this.pieceColor == board.getPosFill(row,col+1))
+                setEdge(get_Index(row,col), get_Index(row,col+1));
+        }
     }
 
     public void printGraph()
