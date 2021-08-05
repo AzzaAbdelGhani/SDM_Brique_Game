@@ -72,5 +72,26 @@ public class Graph {
         }
     }
 
+    public static void main(String...arg)
+    {
+        Graph adjacencyList = new Graph(Piece_Color.BLACK);
+        adjacencyList.add_node(10, 7);
+        adjacencyList.add_node(8, 7);
+        adjacencyList.add_node(0, 7);
+        adjacencyList.add_node(6, 7);
+        adjacencyList.add_node(14, 7);
+        adjacencyList.add_node(1, 7);
+        adjacencyList.add_node(5, 7);
+        adjacencyList.add_node(2, 7);
+        adjacencyList.add_node(7, 7);
+        adjacencyList.add_node(3, 7);
+        adjacencyList.add_node(12, 7);
+        adjacencyList.add_node(4, 7);
+        adjacencyList.add_node(13, 7);
+        adjacencyList.add_node(9, 7);
+        adjacencyList.add_node(11, 7);
+        adjacencyList.printGraph();
+    }
+
 
 }
