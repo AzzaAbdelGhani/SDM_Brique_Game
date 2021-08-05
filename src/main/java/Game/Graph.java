@@ -26,6 +26,12 @@ public class Graph {
         Adjacency_List.get(idx).add(idx);
     }
 
+    public void setEdge(int src, int des)
+    {
+        Adjacency_List.get(des).add(src);
+        Adjacency_List.get(src).add(des);
+    }
+
     public void printGraph()
     {
         System.out.println ("Adjacency List for the graph \n");
