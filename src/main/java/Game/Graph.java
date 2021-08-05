@@ -102,6 +102,26 @@ public class Graph {
         }
     }
 
+    public boolean areBordersConnected()
+    {
+        ArrayList<List<Integer>> borders = getBorders();
+        ArrayList<Integer> visited = new ArrayList<Integer>();
+        for(Integer e : borders.get(0))
+        {
+            if (Adjacency_List.get(e).contains(e))
+            {
+                DFS(e,visited);
+                if(!visited.isEmpty()){
+                    for (Integer v : visited)
+                    {
+                        if (borders.get(1).contains(v)) return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     public void printGraph()
     {
         System.out.println ("Adjacency List for the graph \n");
@@ -135,6 +155,7 @@ public class Graph {
         adjacencyList.add_node(9, 7);
         adjacencyList.add_node(11, 7);
         adjacencyList.printGraph();
+        System.out.println(adjacencyList.areBordersConnected());
     }
 
 
