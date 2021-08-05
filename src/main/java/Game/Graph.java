@@ -92,6 +92,16 @@ public class Graph {
         return borders;
     }
 
+    public void DFS(Integer e, ArrayList<Integer> visited)
+    {
+        visited.add(e);
+        for (Integer i : Adjacency_List.get(e))
+        {
+            if (!visited.contains(i))
+                DFS(i,visited);
+        }
+    }
+
     public void printGraph()
     {
         System.out.println ("Adjacency List for the graph \n");
