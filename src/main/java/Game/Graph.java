@@ -18,7 +18,13 @@ public class Graph {
             Adjacency_List.add(i, new_list);
         }
     }
-    public int get_Index(int row, int col) {return (row*15 + col);}
+
+    public void updateBoard(Board board, int row, int col)
+    {
+        this.board = board;
+        add_node(row, col);
+    }
+    private int get_Index(int row, int col) {return (row*15 + col);}
 
     public void add_node(int row, int col)
     {
@@ -34,7 +40,7 @@ public class Graph {
         Adjacency_List.get(src).add(des);
     }
 
-    public void check_neighbours(int row, int col, Board board)
+    private void check_neighbours(int row, int col, Board board)
     {
         if(board.isValidPos(row-1, col))
         {
@@ -58,7 +64,7 @@ public class Graph {
         }
     }
 
-    public ArrayList<List<Integer>> getBorders()
+    private ArrayList<List<Integer>> getBorders()
     {
         ArrayList<List<Integer>> borders = new ArrayList<List<Integer>>();
         for (int i = 0; i < 2; i++)
@@ -92,7 +98,7 @@ public class Graph {
         return borders;
     }
 
-    public void DFS(Integer e, ArrayList<Integer> visited)
+    private void DFS(Integer e, ArrayList<Integer> visited)
     {
         visited.add(e);
         for (Integer i : Adjacency_List.get(e))
@@ -135,28 +141,5 @@ public class Graph {
             }
         }
     }
-
-    public static void main(String...arg)
-    {
-        Graph adjacencyList = new Graph(Piece_Color.BLACK);
-        adjacencyList.add_node(10, 7);
-        adjacencyList.add_node(8, 7);
-        adjacencyList.add_node(0, 7);
-        adjacencyList.add_node(6, 7);
-        adjacencyList.add_node(14, 7);
-        adjacencyList.add_node(1, 7);
-        adjacencyList.add_node(5, 7);
-        adjacencyList.add_node(2, 7);
-        adjacencyList.add_node(7, 7);
-        adjacencyList.add_node(3, 7);
-        adjacencyList.add_node(12, 7);
-        adjacencyList.add_node(4, 7);
-        adjacencyList.add_node(13, 7);
-        adjacencyList.add_node(9, 7);
-        adjacencyList.add_node(11, 7);
-        adjacencyList.printGraph();
-        System.out.println(adjacencyList.areBordersConnected());
-    }
-
 
 }

@@ -15,8 +15,8 @@ public class Game {
             System.out.println("Both players have same color: hence "
                     + P1.getName() + " is given black and "
                     + P2.getName() + " is given white by default");
-            P1.setColor(Piece_Color.BLACK);
-            P2.setColor(Piece_Color.WHITE);
+            P1.setPieceColor(Piece_Color.BLACK);
+            P2.setPieceColor(Piece_Color.WHITE);
         }
         //Black plays first
         if(P1.getColor() == Piece_Color.BLACK) { P1.setActive(true); }
