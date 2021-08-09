@@ -26,6 +26,4 @@ public class Player {
     public void setPieceColor(Piece_Color pieceColor){this.pieceColor = pieceColor;}
     public void setActive(Boolean active) {this.active = active;}
     public void setGraph(Graph graph) {this.graph = graph;}
-
-    public boolean checkPath() { return this.graph.areBordersConnected(); }
 }
