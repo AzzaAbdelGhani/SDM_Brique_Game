@@ -34,5 +34,4 @@ public class Game {
     public Player getOtherPlayer() { if(P1.IsActive()) { return P2; } else { return P1; } }
 
     public Status getStatus() { return this.gStatus; }
-
 }

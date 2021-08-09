@@ -1,5 +1,7 @@
 package Game;
 
+import java.util.Scanner;
+
 public class Board {
     private static final int size = 15;
     private Position[][] grid = new Position[size][size];
@@ -37,5 +39,4 @@ public class Board {
             System.out.println(" ");
         }
     }
-
 }

@@ -1,5 +1,4 @@
 import Game.Board;
-import Game.Piece_Color;
 import Game.Position;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
