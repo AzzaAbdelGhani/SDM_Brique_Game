@@ -62,9 +62,4 @@ public class Display {
         System.out.println(status.getString());
     }
 
-    public int Check_for_Testing()
-    {
-        System.out.println("Test Success");
-        return 1;
-    }
 }
