@@ -2,6 +2,8 @@ package Brique_CLI;
 
 import Game.*;
 
+import java.util.Scanner;
+
 public class LaunchGame {
     private static Game game;
     private static  Player P1, P2;
@@ -11,8 +13,16 @@ public class LaunchGame {
     {
         P1 = new Player("Player 1", Piece_Color.BLACK);
         P2 = new Player("Player 2", Piece_Color.WHITE);
-        game = new Game(P1, P2);
+        Scanner scanner = new Scanner(System.in);
         move_counter = 0;
+        System.out.println("Welcome to Brique Game");
+        System.out.println("Would you like to know the Game Rules (y/n)?");
+        String a =  scanner.next();
+        if (Display.IsInputYes(a)) Display.printRules(new Game(P1, P2));
+        System.out.println("Would you like to change the settings (y/n)?");
+        a = scanner.next();
+        if (Display.IsInputYes(a)) Settings.changeSettings(P1, P2);
+        game = new Game(P1, P2);
         while (game.getStatus() == Status.ON) {
             Display.printBoard(game.getBoard());
             Display.PlayerTurn(game.getActivePlayer());

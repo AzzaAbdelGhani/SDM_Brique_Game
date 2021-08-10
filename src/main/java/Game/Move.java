@@ -31,13 +31,13 @@ public class Move {
         int size = board.getSize();
         if ( x != size-1 && y != size-1 ) {
             if (current == board.getPosFill(x+1, y+1) && color == Pos_Color.LIGHT) { fillBoardAndUpdateGraph(x, y+1, current); }
-            if (current == board.getPosFill(x+1, y+1) && color == Pos_Color.DARK) { fillBoardAndUpdateGraph(x +1, y, current); }
+            if (current == board.getPosFill(x+1, y+1) && color == Pos_Color.DARK) { fillBoardAndUpdateGraph(x+1, y, current); }
         }
         if ( x != 0 && y != 0 ){
-            if (current == board.getPosFill(x-1, y-1) && color == Pos_Color.LIGHT) { fillBoardAndUpdateGraph(x -1, y, current); }
-            if (current == board.getPosFill(x-1, y-1) && color == Pos_Color.DARK){ fillBoardAndUpdateGraph(x, y -1, current);}
+            if (current == board.getPosFill(x-1, y-1) && color == Pos_Color.LIGHT) { fillBoardAndUpdateGraph(x, y-1, current); }
+            if (current == board.getPosFill(x-1, y-1) && color == Pos_Color.DARK){ fillBoardAndUpdateGraph(x-1, y, current);}
         }
-        if (x == size-1 && color == Pos_Color.DARK) { fillBoardAndUpdateGraph(x, y +1, current); }
+        if (x == size-1 && color == Pos_Color.DARK) { fillBoardAndUpdateGraph(x, y+1, current); }
         
     }
 
@@ -46,6 +46,7 @@ public class Move {
             this.x = x;
             this.y = y;
             board.setPiece(x, y, currentPlayer.getColor());
+            fillEscorts();
             currentPlayer.setActive(Boolean.FALSE);
             otherPlayer.setActive(Boolean.TRUE);
             return Boolean.TRUE;

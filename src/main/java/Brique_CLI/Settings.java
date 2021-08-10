@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Settings {
 
-    public void changeSettings(Player p1, Player p2)
+    public static void changeSettings(Player p1, Player p2)
     {
         Scanner scanner = new Scanner(System.in);
         Piece_Color color1, color2;
