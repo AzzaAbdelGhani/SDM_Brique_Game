@@ -42,7 +42,7 @@ public class MoveTest {
         move.makeMove(1, 1);
         move.makeMove(2, 2);
         move.fillEscorts();
-        assertEquals(board.getPosFill(1, 1), board.getPosFill(1, 2));
+        assertEquals(board.getPosFill(1, 1), board.getPosFill(2, 1));
         board.printBoard();
     }
 }
