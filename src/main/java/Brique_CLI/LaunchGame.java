@@ -26,6 +26,24 @@ public class LaunchGame {
         while (game.getStatus() == Status.ON) {
             Display.printBoard(game.getBoard());
             Display.PlayerTurn(game.getActivePlayer());
+            if (move_counter == 1)
+            {
+                System.out.println("Would you like to use Pie Rule? yes/no");
+                String in = scanner.next();
+                while (!in.equals("yes") && !in.equals("no")) {
+                    System.out.println("Please enter yes or no : ");
+                    in = scanner.next();
+                }
+                if (in.equals("yes"))
+                {
+                    Settings.applyPieRule(P1,P2);
+                    game.getActivePlayer().setActive(false);
+                    game.getOtherPlayer().setActive(true);
+                    move_counter++;
+                    continue;
+                }
+
+            }
             Move move = new Move(game.getBoard(), game.getActivePlayer(), game.getOtherPlayer());
             int y = Display.getInputChar();
             int x = Display.getInputInt();

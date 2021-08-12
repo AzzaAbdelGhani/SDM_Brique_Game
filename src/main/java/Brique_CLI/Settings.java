@@ -30,4 +30,15 @@ public class Settings {
         p2.setName(name2);
         p2.setPieceColor(color2);
     }
+
+    public static void applyPieRule(Player p1, Player p2)
+    {
+        Piece_Color c = p1.getColor();
+        p1.setPieceColor(p2.getColor());
+        p2.setPieceColor(c);
+
+        Graph g = p1.getGraph();
+        p1.setGraph(p2.getGraph());
+        p2.setGraph(g);
+    }
 }
