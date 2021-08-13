@@ -3,7 +3,7 @@ package Game;
 public class Move {
     private Board board;
     private Player currentPlayer, otherPlayer;
-    private int x,y;
+    private Coordinates coordinates;
 
     public Move(Board board, Player currentPlayer, Player otherPlayer){
         this.board = board;
@@ -11,41 +11,35 @@ public class Move {
         this.otherPlayer = otherPlayer;
     }
 
-    //setters
-    protected void setX(int x) { this.x = x; }
-    protected void setY(int y) { this.y = y; }
 
     //getters
-    public int getX() { return this.x; }
-    public int getY() { return this.y; }
+    public Coordinates getCoordinates() { return this.coordinates; }
 
-    public void fillBoardAndUpdateGraph(int i, int j, Piece_Color color)
+
+    public void fillBoardAndUpdateGraph(Coordinates coordinates, Piece_Color color)
     {
-        board.setPiece(i, j, color);
-        currentPlayer.updateGraph(board,i,j);
+        board.setPiece(coordinates, color);
+        currentPlayer.getGraph().updateBoard(board,coordinates);
     }
 
     public void fillEscorts(){
         Piece_Color current = currentPlayer.getColor();
-        Pos_Color color = board.getPosColor(x, y);
+        Pos_Color color = board.getPos(coordinates).getPosColor();
         int size = board.getSize();
-        if ( x != size-1 && y != size-1 ) {
-            if (current == board.getPosFill(x+1, y+1) && color == Pos_Color.LIGHT) { fillBoardAndUpdateGraph(x, y+1, current); }
-            if (current == board.getPosFill(x+1, y+1) && color == Pos_Color.DARK) { fillBoardAndUpdateGraph(x+1, y, current); }
+        if ( coordinates.getRow_idx() != size-1 && coordinates.getCol_idx() != size-1 ) {
+            if (current == board.getPos(coordinates.getDiagUp()).getPieceColor() && color == Pos_Color.LIGHT) { fillBoardAndUpdateGraph(coordinates.getUp(), current); }
+            if (current == board.getPos(coordinates.getDiagUp()).getPieceColor()  && color == Pos_Color.DARK) { fillBoardAndUpdateGraph(coordinates.getRight(), current); }
         }
-        if ( x != 0 && y != 0 ){
-            if (current == board.getPosFill(x-1, y-1) && color == Pos_Color.LIGHT) { fillBoardAndUpdateGraph(x, y-1, current); }
-            if (current == board.getPosFill(x-1, y-1) && color == Pos_Color.DARK){ fillBoardAndUpdateGraph(x-1, y, current);}
+        if ( coordinates.getRow_idx() != 0 && coordinates.getCol_idx() != 0 ){
+            if (current == board.getPos(coordinates.getDiagDown()).getPieceColor()  && color == Pos_Color.LIGHT) { fillBoardAndUpdateGraph(coordinates.getDown(), current); }
+            if (current == board.getPos(coordinates.getDiagDown()).getPieceColor()  && color == Pos_Color.DARK){ fillBoardAndUpdateGraph(coordinates.getRight(), current);}
         }
-        if (x == size-1 && color == Pos_Color.DARK) { fillBoardAndUpdateGraph(x, y+1, current); }
         
     }
 
-    public boolean makeMove(int x, int y){
-        if (board.isValidPos(x,y) && board.getPosFill(x,y) == Piece_Color.BLANK){
-            this.x = x;
-            this.y = y;
-            board.setPiece(x, y, currentPlayer.getColor());
+    public boolean makeMove(Coordinates coordinates){
+        if (board.isValidPos(coordinates) && board.getPos(coordinates).getPieceColor() == Piece_Color.BLANK){
+            board.setPiece(coordinates, currentPlayer.getColor());
             fillEscorts();
             currentPlayer.setActive(Boolean.FALSE);
             otherPlayer.setActive(Boolean.TRUE);
