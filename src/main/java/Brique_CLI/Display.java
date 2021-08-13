@@ -101,8 +101,12 @@ public class Display {
         System.out.println(player.getName() + "'s turn" );
     }
 
-    public static void GameFinishMessage(Status status){
-        System.out.println(status.getString());
+    public static void GameFinishMessage(Status status, String PlayerName)
+    {
+        if (status == Status.P1_WINS || status == Status.P2_WINS)
+            System.out.println("Congratulations!!! "+ PlayerName + " WINS !!!");
+        else
+            System.out.println(status.getString());
     }
 
     public static String displayAMsgAndGetUI(String disp) {

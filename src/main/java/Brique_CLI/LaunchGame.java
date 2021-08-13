@@ -42,7 +42,7 @@ public class LaunchGame {
             if (move_counter > 28)  game.checkVictory();
         }
         Display.printBoard(game.getBoard());
-        Display.GameFinishMessage(game.getStatus());
+        Display.GameFinishMessage(game.getStatus(), game.getOtherPlayer().getName());
     }
 
 }
