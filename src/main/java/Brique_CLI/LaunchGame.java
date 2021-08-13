@@ -47,7 +47,7 @@ public class LaunchGame {
             Move move = new Move(game.getBoard(), game.getActivePlayer(), game.getOtherPlayer());
             int y = Display.getInputChar();
             int x = Display.getInputInt();
-            while (!move.makeMove(x, y)) {
+            while (!move.makeMove(new Coordinates(x,y))) {
                 Display.InvalidInput();
                 y = Display.getInputChar();
                 x = Display.getInputInt();
