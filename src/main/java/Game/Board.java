@@ -1,6 +1,8 @@
 package Game;
 
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Board {
@@ -23,8 +25,9 @@ public class Board {
     public Piece_Color getPosFill(int i, int j) {return this.grid[i][j].getPieceColor();}
 
     public Boolean isValidPos(int i, int j){
-        if (i < 0 || j < 0 || i >= size || j >= size) { return Boolean.FALSE; }
-        return Boolean.TRUE;
+        List<Integer> range = IntStream.range(0,size).boxed().collect(Collectors.toList());
+        if(range.contains(i) && range.contains(j)) { return Boolean.TRUE; }
+        return Boolean.FALSE;
     }
 
     public void printBoard(){
