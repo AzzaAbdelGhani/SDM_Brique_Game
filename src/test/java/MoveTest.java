@@ -37,10 +37,12 @@ public class MoveTest {
     @Test
     public void checkEscortFilling()
     {
-        move.makeMove(new Coordinates(1,1));
-        move.makeMove(new Coordinates(2,2));
+        Coordinates co = new Coordinates(1,1);
+        Coordinates co1 = co.getDiagUp();
+        move.makeMove(co);
+        move.makeMove(co1);
         move.fillEscorts();
-        assertEquals(board.getPos(new Coordinates(1,1)).getPieceColor(), board.getPos(new Coordinates(2,1)).getPieceColor());
+        assertEquals(board.getPos(co).getPieceColor(), board.getPos(co.getUp()).getPieceColor());
         board.printBoard();
     }
 }

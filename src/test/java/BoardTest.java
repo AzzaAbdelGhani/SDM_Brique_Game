@@ -17,6 +17,7 @@ public class BoardTest {
     @Test
     public void checkGetPos()
     {
-        assertEquals(board.getPos(coordinates), pos);
+        assertEquals(board.getPos(coordinates).getRow_idx(), pos.getRow_idx());
+        assertEquals(board.getPos(coordinates).getCol_idx(), pos.getCol_idx());
     }
 }
