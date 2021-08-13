@@ -1,7 +1,4 @@
-import Game.Board;
-import Game.Move;
-import Game.Piece_Color;
-import Game.Player;
+import Game.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,35 +11,36 @@ public class MoveTest {
     @Test
     public void checkMakeMove()
     {
-        assertTrue(move.makeMove(0,5));
-        assertEquals(this.board.getPosFill(0,5), Piece_Color.BLACK);
+        Coordinates coordinates = new Coordinates(0,5);
+        assertTrue(move.makeMove(coordinates));
+        assertEquals(this.board.getPos(coordinates).getPieceColor(), Piece_Color.BLACK);
         assertFalse(this.P1.IsActive());
         assertTrue(this.P2.IsActive());
     }
     @Test
     public void checkXandY()
     {
-        move.makeMove(5, 1);
-        assertEquals(move.getX(), 5);
-        assertEquals(move.getY(), 1);
+        Coordinates coordinates = new Coordinates(0,5);
+        move.makeMove(coordinates);
+        assertEquals(move.getCoordinates(), coordinates);
     }
     @Test
     public void checkInvalidMove()
     {
-        assertFalse(move.makeMove(-1,5));
-        assertFalse(move.makeMove(16,7));
-        assertFalse(move.makeMove(4, -8));
-        assertFalse(move.makeMove(1, 19));
-        assertTrue(move.makeMove(1,2));
-        assertFalse(move.makeMove(1, 2));
+        assertFalse(move.makeMove(new Coordinates(-1, 6)));
+        assertFalse(move.makeMove(new Coordinates(16,3)));
+        assertFalse(move.makeMove(new Coordinates(4,-7)));
+        assertFalse(move.makeMove(new Coordinates(1, 18)));
+        assertTrue(move.makeMove(new Coordinates(1,9)));
+        assertFalse(move.makeMove(new Coordinates(18, -6)));
     }
     @Test
     public void checkEscortFilling()
     {
-        move.makeMove(1, 1);
-        move.makeMove(2, 2);
+        move.makeMove(new Coordinates(1,1));
+        move.makeMove(new Coordinates(2,2));
         move.fillEscorts();
-        assertEquals(board.getPosFill(1, 1), board.getPosFill(2, 1));
+        assertEquals(board.getPos(new Coordinates(1,1)).getPieceColor(), board.getPos(new Coordinates(2,1)).getPieceColor());
         board.printBoard();
     }
 }
