@@ -40,27 +40,23 @@ public class Graph {
         Adjacency_List.get(src).add(des);
     }
 
+    private boolean isNeighbourFilled(Coordinates coordinates){
+        if(board.isValidPos(coordinates)){
+            if(board.getPos(coordinates).getPieceColor() == pieceColor) return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
     private void check_neighbours(Coordinates coordinates)
     {
-        if(board.isValidPos(coordinates.getLeft()))
-        {
-            if ( this.pieceColor == board.getPos(coordinates.getLeft()).getPieceColor())
-                setEdge(get_Index(coordinates), get_Index(coordinates.getLeft()));
-        }
-        if(board.isValidPos(coordinates.getRight()))
-        {
-            if ( this.pieceColor == board.getPos(coordinates.getRight()).getPieceColor())
-                setEdge(get_Index(coordinates), get_Index(coordinates.getRight()));
-        }
-        if(board.isValidPos(coordinates.getDown()))
-        {
-            if ( this.pieceColor == board.getPos(coordinates.getDown()).getPieceColor())
-                setEdge(get_Index(coordinates), get_Index(coordinates.getDown()));
-        }
-        if(board.isValidPos(coordinates.getUp()))
-        {
-            if ( this.pieceColor == board.getPos(coordinates.getUp()).getPieceColor())
-                setEdge(get_Index(coordinates), get_Index(coordinates.getUp()));
+        ArrayList<Coordinates> neighbours = new ArrayList<>();
+        neighbours.add(coordinates.getUp());
+        neighbours.add(coordinates.getDown());
+        neighbours.add(coordinates.getLeft());
+        neighbours.add(coordinates.getRight());
+
+        for(Coordinates n:neighbours) {
+            if(isNeighbourFilled(n)) setEdge(get_Index(coordinates),get_Index(n));
         }
     }
 
