@@ -4,11 +4,13 @@ public class Move {
     private Board board;
     private Player currentPlayer, otherPlayer;
     private Coordinates coordinates;
+    private Piece_Color currentColor;
 
     public Move(Board board, Player currentPlayer, Player otherPlayer){
         this.board = board;
         this.currentPlayer = currentPlayer;
         this.otherPlayer = otherPlayer;
+        this.currentColor = currentPlayer.getColor();
     }
 
 
@@ -16,30 +18,35 @@ public class Move {
     public Coordinates getCoordinates() { return this.coordinates; }
 
 
-    public void fillBoardAndUpdateGraph(Coordinates coordinates, Piece_Color color)
+    public void fillBoardAndUpdateGraph(Coordinates coordinates)
     {
-        board.setPiece(coordinates, color);
+        board.getPos(coordinates).setPieceColor(currentColor);
         currentPlayer.getGraph().updateBoard(board,coordinates);
     }
 
+    private boolean isEscortFilled(Coordinates coordinates){
+        if (!board.isValidPos(coordinates)) return Boolean.FALSE;
+        if (board.getPos(coordinates).getPieceColor() == currentPlayer.getColor()) return Boolean.TRUE;
+        return Boolean.FALSE;
+    }
+
     public void fillEscorts(){
-        Piece_Color current = currentPlayer.getColor();
         Pos_Color color = board.getPos(coordinates).getPosColor();
-        int size = board.getSize();
-        if ( coordinates.getRow_idx() != size-1 && coordinates.getCol_idx() != size-1 ) {
-            if (current == board.getPos(coordinates.getDiagUp()).getPieceColor() && color == Pos_Color.LIGHT) { fillBoardAndUpdateGraph(coordinates.getUp(), current); }
-            if (current == board.getPos(coordinates.getDiagUp()).getPieceColor()  && color == Pos_Color.DARK) { fillBoardAndUpdateGraph(coordinates.getRight(), current); }
+        if(color == Pos_Color.LIGHT){
+            if (isEscortFilled(coordinates.getDiagUp())) fillBoardAndUpdateGraph(coordinates.getUp());
+            if (isEscortFilled(coordinates.getDiagDown())) fillBoardAndUpdateGraph(coordinates.getLeft());
         }
-        if ( coordinates.getRow_idx() != 0 && coordinates.getCol_idx() != 0 ){
-            if (current == board.getPos(coordinates.getDiagDown()).getPieceColor()  && color == Pos_Color.LIGHT) { fillBoardAndUpdateGraph(coordinates.getDown(), current); }
-            if (current == board.getPos(coordinates.getDiagDown()).getPieceColor()  && color == Pos_Color.DARK){ fillBoardAndUpdateGraph(coordinates.getRight(), current);}
+        else {
+            if (isEscortFilled(coordinates.getDiagUp())) fillBoardAndUpdateGraph(coordinates.getRight());
+            if (isEscortFilled(coordinates.getDiagDown())) fillBoardAndUpdateGraph(coordinates.getDown());
         }
         
     }
 
     public boolean makeMove(Coordinates coordinates){
         if (board.isValidPos(coordinates) && board.getPos(coordinates).getPieceColor() == Piece_Color.BLANK){
-            board.setPiece(coordinates, currentPlayer.getColor());
+            this.coordinates = coordinates;
+            fillBoardAndUpdateGraph(coordinates);
             fillEscorts();
             currentPlayer.setActive(Boolean.FALSE);
             otherPlayer.setActive(Boolean.TRUE);
