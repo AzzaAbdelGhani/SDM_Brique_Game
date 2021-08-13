@@ -42,18 +42,23 @@ public class Move {
         }
         
     }
+    public void changePlayerTurn() {
+        currentPlayer.setActive(Boolean.FALSE);
+        otherPlayer.setActive(Boolean.TRUE);
+    }
 
     public boolean makeMove(Coordinates coordinates){
         if (board.isValidPos(coordinates) && board.getPos(coordinates).getPieceColor() == Piece_Color.BLANK){
             this.coordinates = coordinates;
             fillBoardAndUpdateGraph(coordinates);
             fillEscorts();
-            currentPlayer.setActive(Boolean.FALSE);
-            otherPlayer.setActive(Boolean.TRUE);
+            changePlayerTurn();
             return Boolean.TRUE;
         }
         else
             return Boolean.FALSE;
     }
+
+
 
 }

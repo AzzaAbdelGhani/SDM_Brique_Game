@@ -83,24 +83,31 @@ public class Display {
         System.out.println("-------------------------------------------------------------");
 
     }
-    public static int getInputChar(){
-        System.out.print("Enter the coordinates:");
-        char a = sc.next().charAt(0);
-        return (int) a - 97;
+
+    public static Coordinates getUserInputCoordinates(){
+        System.out.print("Please enter the coordinates:\t");
+        Scanner scanner = new Scanner(System.in);
+        char a = scanner.next().charAt(0);
+        int y = (int) a - 97;
+        int x = scanner.nextInt() - 1;
+        return new Coordinates(x,y);
     }
-    public static int getInputInt(){
-        int x = sc.nextInt();
-        return x-1;
-    }
+
     public static void InvalidInput(){
         System.out.println("Invalid Coordinates Enter again");
     }
+
     public static void PlayerTurn(Player player){
         System.out.println(player.getName() + "'s turn" );
     }
 
     public static void GameFinishMessage(Status status){
         System.out.println(status.getString());
+    }
+
+    public static String displayAMsgAndGetUI(String disp) {
+        System.out.println(disp);
+        return sc.next();
     }
 
     public static Boolean IsInputYes(String a) {

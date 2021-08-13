@@ -16,46 +16,32 @@ public class LaunchGame {
         Scanner scanner = new Scanner(System.in);
         move_counter = 0;
         System.out.println("Welcome to Brique Game");
-        System.out.println("Would you like to know the Game Rules (y/n)?");
-        String a =  scanner.next();
+        String a =  Display.displayAMsgAndGetUI("Would you like to know the Game Rules (y/n)?");
         if (Display.IsInputYes(a)) Display.printRules(new Game(P1, P2));
-        System.out.println("Would you like to change the settings (y/n)?");
-        a = scanner.next();
+        a = Display.displayAMsgAndGetUI("Would you like to change the settings (y/n)?");
         if (Display.IsInputYes(a)) Settings.changeSettings(P1, P2);
         game = new Game(P1, P2);
         while (game.getStatus() == Status.ON) {
             Display.printBoard(game.getBoard());
             Display.PlayerTurn(game.getActivePlayer());
+            Move move = new Move(game.getBoard(), game.getActivePlayer(), game.getOtherPlayer());
             if (move_counter == 1)
             {
-                System.out.println("Would you like to use Pie Rule? yes/no");
-                String in = scanner.next();
-                while (!in.equals("yes") && !in.equals("no")) {
-                    System.out.println("Please enter yes or no : ");
-                    in = scanner.next();
-                }
-                if (in.equals("yes"))
+                a = Display.displayAMsgAndGetUI("Would you like to use Pie Rule? yes/no");
+                if (Display.IsInputYes(a))
                 {
                     Settings.applyPieRule(P1,P2);
-                    game.getActivePlayer().setActive(false);
-                    game.getOtherPlayer().setActive(true);
+                    move.changePlayerTurn();
                     move_counter++;
                     continue;
                 }
 
             }
-            Move move = new Move(game.getBoard(), game.getActivePlayer(), game.getOtherPlayer());
-            int y = Display.getInputChar();
-            int x = Display.getInputInt();
-            while (!move.makeMove(new Coordinates(x,y))) {
-                Display.InvalidInput();
-                y = Display.getInputChar();
-                x = Display.getInputInt();
-            }
+            while (!move.makeMove(Display.getUserInputCoordinates())) { Display.InvalidInput(); }
             move_counter++;
             if (move_counter > 28) {
-                if (P1.checkPath()) game.setStatus(Status.P1_WINS);
-                if (P2.checkPath()) game.setStatus(Status.P2_WINS);
+                if (game.getActivePlayer().checkPath()) game.setStatus(Status.P1_WINS);
+                if (game.getOtherPlayer().checkPath()) game.setStatus(Status.P2_WINS);
                 if (move_counter > 225) game.setStatus(Status.OVER);
             }
             Display.GameFinishMessage(game.getStatus());
