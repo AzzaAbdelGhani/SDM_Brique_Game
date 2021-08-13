@@ -18,7 +18,6 @@ public class Player {
     public Piece_Color getColor() {return this.pieceColor;}
     public Boolean IsActive() {return this.active;}
     public Graph getGraph() {return this.graph;}
-    public void updateGraph(Board board, int x, int y){this.graph.updateBoard(board, x, y);}
     public boolean checkPath() {return this.graph.areBordersConnected();}
 
     //setters
