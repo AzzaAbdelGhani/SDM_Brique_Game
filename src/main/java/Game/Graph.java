@@ -30,7 +30,7 @@ public class Graph {
     {
         int idx = get_Index(coordinates);
         Adjacency_List.get(idx).add(idx);
-        this.board.setPiece(coordinates, this.pieceColor);
+        this.board.getPos(coordinates).setPieceColor(pieceColor);
         check_neighbours(coordinates);
     }
 

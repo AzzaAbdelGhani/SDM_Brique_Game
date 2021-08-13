@@ -11,8 +11,6 @@ public class Board {
     public Board() {
         IntStream.range(0,size).forEach(i->IntStream.range(0,size).forEach(j->this.grid[i][j] = new Position(i,j)));
     }
-    //setters
-    protected void setPiece(Coordinates coordinates, Piece_Color color) { this.grid[coordinates.getRow_idx()][coordinates.getCol_idx()].setPieceColor(color);}
 
     //getters
     public int getSize() { return size; }
