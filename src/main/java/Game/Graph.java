@@ -19,19 +19,19 @@ public class Graph {
         }
     }
 
-    public void updateBoard(Board board, int row, int col)
+    public void updateBoard(Board board, Coordinates coordinates)
     {
         this.board = board;
-        add_node(row, col);
+        add_node(coordinates);
     }
-    private int get_Index(int row, int col) {return (row*15 + col);}
+    private int get_Index(Coordinates coordinates) {return (coordinates.getRow_idx() *15 + coordinates.getCol_idx());}
 
-    public void add_node(int row, int col)
+    public void add_node(Coordinates coordinates)
     {
-        int idx = get_Index(row, col);
+        int idx = get_Index(coordinates);
         Adjacency_List.get(idx).add(idx);
-        this.board.setPiece(row,col,this.pieceColor);
-        check_neighbours(row, col, this.board);
+        this.board.setPiece(coordinates, this.pieceColor);
+        check_neighbours(coordinates);
     }
 
     public void setEdge(int src, int des)
@@ -40,27 +40,27 @@ public class Graph {
         Adjacency_List.get(src).add(des);
     }
 
-    private void check_neighbours(int row, int col, Board board)
+    private void check_neighbours(Coordinates coordinates)
     {
-        if(board.isValidPos(row-1, col))
+        if(board.isValidPos(coordinates.getLeft()))
         {
-            if ( this.pieceColor == board.getPosFill(row-1,col))
-                setEdge(get_Index(row,col), get_Index(row-1,col));
+            if ( this.pieceColor == board.getPos(coordinates.getLeft()).getPieceColor())
+                setEdge(get_Index(coordinates), get_Index(coordinates.getLeft()));
         }
-        if(board.isValidPos(row+1, col))
+        if(board.isValidPos(coordinates.getRight()))
         {
-            if ( this.pieceColor == board.getPosFill(row+1,col))
-                setEdge(get_Index(row,col), get_Index(row+1,col));
+            if ( this.pieceColor == board.getPos(coordinates.getRight()).getPieceColor())
+                setEdge(get_Index(coordinates), get_Index(coordinates.getRight()));
         }
-        if(board.isValidPos(row, col-1))
+        if(board.isValidPos(coordinates.getDown()))
         {
-            if ( this.pieceColor == board.getPosFill(row,col-1))
-                setEdge(get_Index(row,col), get_Index(row,col-1));
+            if ( this.pieceColor == board.getPos(coordinates.getDown()).getPieceColor())
+                setEdge(get_Index(coordinates), get_Index(coordinates.getDown()));
         }
-        if(board.isValidPos(row, col+1))
+        if(board.isValidPos(coordinates.getUp()))
         {
-            if ( this.pieceColor == board.getPosFill(row,col+1))
-                setEdge(get_Index(row,col), get_Index(row,col+1));
+            if ( this.pieceColor == board.getPos(coordinates.getUp()).getPieceColor())
+                setEdge(get_Index(coordinates), get_Index(coordinates.getUp()));
         }
     }
 
