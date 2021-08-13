@@ -1,9 +1,7 @@
 package Brique_CLI;
 
 import Game.*;
-import com.sun.security.jgss.GSSUtil;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Display {
@@ -27,7 +25,7 @@ public class Display {
         System.out.println("Enter the coordinates: a 1");
         System.out.println("The position 'a 1' is filled as follows");
         Move move = new Move(game.getBoard(), game.getActivePlayer(), game.getOtherPlayer());
-        move.makeMove(0, 0);
+        move.makeMove(new Coordinates(0,0));
         printBoard(game.getBoard());
         System.out.println("Only empty positions can be filled; except any filled position can be refilled through escort rules");
         System.out.println("ESCORT RULES: The light and dark position colors have escort rules");
@@ -40,11 +38,11 @@ public class Display {
         System.out.println("It is shown as follows:");
         PlayerTurn(game.getActivePlayer());
         move = new Move(game.getBoard(), game.getActivePlayer(), game.getOtherPlayer());
-        move.makeMove(1, 0);
+        move.makeMove(new Coordinates(1,1));
         printBoard(game.getBoard());
         PlayerTurn(game.getActivePlayer());
         move = new Move(game.getBoard(), game.getActivePlayer(), game.getOtherPlayer());
-        move.makeMove(1, 1);
+        move.makeMove(new Coordinates(2,2));
         printBoard(game.getBoard());
         System.out.println("The white in position 'a 2' got replaced by black due to escort rules");
         System.out.println("And the game continues until an orthogonal path connecting the borders are achieved by one player");
@@ -63,9 +61,10 @@ public class Display {
             if (i < 9) System.out.print(" ");
             System.out.print(i + 1 + " ");
             for (int j = 0; j < size; j = j + 1) {
-                if (board.getPos(i,j).getPieceColor() == Piece_Color.BLACK) {
+                Coordinates coordinates = new Coordinates(i,j);
+                if (board.getPos(coordinates).getPieceColor() == Piece_Color.BLACK) {
                     System.out.print("|" + "B");
-                } else if (board.getPos(i,j).getPieceColor() == Piece_Color.WHITE) {
+                } else if (board.getPos(coordinates).getPieceColor() == Piece_Color.WHITE) {
                     System.out.print("|" + "W");
                 } else if ((i + j) % 2 == 0) {
                     System.out.print("| ");
