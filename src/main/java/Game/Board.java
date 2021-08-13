@@ -1,17 +1,14 @@
 package Game;
 
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class Board {
     private static final int size = 15;
     private Position[][] grid = new Position[size][size];
 
     public Board() {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                this.grid[i][j] = new Position(i, j);
-            }
-        }
+        IntStream.range(0,size).forEach(i->IntStream.range(0,size).forEach(j->this.grid[i][j] = new Position(i,j)));
     }
     //setters
     protected void setPiece(int i, int j, Piece_Color color) { this.grid[i][j].setPieceColor(color);}
