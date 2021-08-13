@@ -39,13 +39,10 @@ public class LaunchGame {
             }
             while (!move.makeMove(Display.getUserInputCoordinates())) { Display.InvalidInput(); }
             move_counter++;
-            if (move_counter > 28) {
-                if (game.getActivePlayer().checkPath()) game.setStatus(Status.P1_WINS);
-                if (game.getOtherPlayer().checkPath()) game.setStatus(Status.P2_WINS);
-                if (move_counter > 225) game.setStatus(Status.OVER);
-            }
-            Display.GameFinishMessage(game.getStatus());
+            if (move_counter > 28)  game.checkVictory();
         }
+        Display.printBoard(game.getBoard());
+        Display.GameFinishMessage(game.getStatus());
     }
 
 }
