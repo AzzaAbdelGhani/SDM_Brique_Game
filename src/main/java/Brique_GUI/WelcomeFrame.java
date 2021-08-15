@@ -22,7 +22,11 @@ public class WelcomeFrame extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e)
     {
-
+        if (e.getSource() == startGame)
+        {
+            this.main.setVisible(false);
+            new BoardFrame();
+        }
     }
 
     public static void main (String args[])
