@@ -17,6 +17,7 @@ public class WelcomeFrame extends JFrame implements ActionListener {
     private JLabel defaultSettingsMessage = new JLabel("Default Settings : P1 (BLACK) vs P2 (WHITE)");
     private Player P1 = new Player("P1", Piece_Color.BLACK);
     private Player P2 = new Player("P2", Piece_Color.WHITE);
+    private GUI_settings changeDialog = new GUI_settings(this,"Change Settings");
 
     public WelcomeFrame() throws IOException {
 
@@ -70,6 +71,19 @@ public class WelcomeFrame extends JFrame implements ActionListener {
             this.setVisible(false);
             new BoardFrame(this,P1,P2);
         }
+        if (e.getSource() == changeSettings)
+        {
+            if(!changeDialog.isVisible()) changeDialog.setVisible(true);
+            changeDialog.addChangeListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    P1.setName(changeDialog.getP1Name());
+                    P2.setName(changeDialog.getP2Name());
+                    changeDialog.setVisible(false);
+                }
+            });
+        }
+
     }
 
     public static void main (String args[])
