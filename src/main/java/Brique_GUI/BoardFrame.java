@@ -1,5 +1,7 @@
 package Brique_GUI;
 
+import Game.Piece_Color;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseListener;
@@ -13,12 +15,10 @@ public class BoardFrame extends JFrame implements MouseListener {
     public BoardFrame()
     {
         this.board= new JFrame("Board");
-        this.board.setSize(600,600);
         this.board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.board.setSize(new Dimension(720,720));
         this.board.setBackground(Color.BLACK);
         this. board.setLayout(new GridLayout(15,15,0,0));
-
+        this.board.setSize(new Dimension(720,720));
         for (int r = 0; r<15; r++)
         {
             for (int c = 0; c<15; c++)
@@ -27,12 +27,14 @@ public class BoardFrame extends JFrame implements MouseListener {
                 this.board.add(this.grid.get(r*15+c));
             }
         }
-        this.board.addMouseListener(this);
         board.setVisible(true);
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("Hello");
+        Object source = e.getSource();
+        PositionPanel temp = (PositionPanel) source;
+        temp.setPiece(Piece_Color.BLACK);
+        temp.repaint();
 
     }
 

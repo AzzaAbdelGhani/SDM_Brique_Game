@@ -43,4 +43,6 @@ public class PositionPanel extends JPanel {
             drawPiece(32,32,g,Color.WHITE);
         }
     }
+
+    public void setPiece(Piece_Color pColor) { this.pColor = pColor; }
 }
