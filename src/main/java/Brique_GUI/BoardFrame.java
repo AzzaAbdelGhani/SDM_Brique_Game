@@ -2,7 +2,7 @@ package Brique_GUI;
 
 import Game.Piece_Color;
 import Game.Player;
-
+import Game.Game;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseListener;
@@ -10,11 +10,15 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class BoardFrame extends JFrame implements MouseListener {
-    JFrame board;
-    ArrayList<PositionPanel> grid = new ArrayList<>();
+    private JFrame board;
+    private ArrayList<PositionPanel> grid = new ArrayList<>();
+    private Player P1, P2;
 
-    public BoardFrame(JFrame frame, Player p1, Player p2)
+    public BoardFrame(JFrame frame, Player P1, Player P2)
     {
+        this.P1 = P1;
+        this.P2 = P2;
+        Game game = new Game(this.P1,this.P2);
         this.board= new JFrame("Board");
         this.board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.board.setBackground(Color.BLACK);
