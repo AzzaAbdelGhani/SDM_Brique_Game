@@ -43,6 +43,5 @@ public class MoveTest {
         move.makeMove(co1);
         move.fillEscorts();
         assertEquals(board.getPos(co).getPieceColor(), board.getPos(co.getUp()).getPieceColor());
-        board.printBoard();
     }
 }

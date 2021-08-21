@@ -1,5 +1,7 @@
 package Game;
 
+import org.junit.jupiter.params.shadow.com.univocity.parsers.common.processor.core.ColumnOrderDependent;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -23,13 +25,4 @@ public class Board {
         return Boolean.FALSE;
     }
 
-    public void printBoard(){
-        for(int i = size-1; i >=0; i--){
-            for(int j = 0; j < size; j++){
-                Piece_Color color = getPos(new Coordinates(i,j)).getPieceColor();
-                System.out.print(color.getString() + "\t");
-            }
-            System.out.println(" ");
-        }
-    }
 }
