@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CoordinateTest {
-    private final Coordinates coordinates = new Coordinates(5,7);
 
     @ParameterizedTest
     @CsvSource({"3, 5, 3, 5", "8,10, 8, 10", "16, 18, 16, 18", "9, 3, 9, 3", "-1,-6, -1, -6"})
