@@ -1,0 +1,214 @@
+*****************************************************
+*****************************************************
+***********Welcome to Brique Game********************
+*****************************************************
+*****************************************************
+
+The Brique Game consists of two players: Player 1, Player 2 with two Pieces - Black and White
+Basic Components of the Game are
+
+
+******* Players and Colors ********
+By default Player 1 has the Black Piece and Player 2 has White Piece
+The player names and colors can be changed in the settings
+Player with black begins first
+
+
+********** Board ********************
+The board is 15*15 size and given as follows with light(| |) and dark(|#|) positions
+    a b c d e f g h i j k l m n o
+15 | |#| |#| |#| |#| |#| |#| |#| | 15
+14 |#| |#| |#| |#| |#| |#| |#| |#| 14
+13 | |#| |#| |#| |#| |#| |#| |#| | 13
+12 |#| |#| |#| |#| |#| |#| |#| |#| 12
+11 | |#| |#| |#| |#| |#| |#| |#| | 11
+10 |#| |#| |#| |#| |#| |#| |#| |#| 10
+ 9 | |#| |#| |#| |#| |#| |#| |#| | 9
+ 8 |#| |#| |#| |#| |#| |#| |#| |#| 8
+ 7 | |#| |#| |#| |#| |#| |#| |#| | 7
+ 6 |#| |#| |#| |#| |#| |#| |#| |#| 6
+ 5 | |#| |#| |#| |#| |#| |#| |#| | 5
+ 4 |#| |#| |#| |#| |#| |#| |#| |#| 4
+ 3 | |#| |#| |#| |#| |#| |#| |#| | 3
+ 2 |#| |#| |#| |#| |#| |#| |#| |#| 2
+ 1 | |#| |#| |#| |#| |#| |#| |#| | 1
+    a b c d e f g h i j k l m n o
+-------------------------------------------------------------
+
+
+********* Goal of the Game ***********
+The goal is to connect the two borders through an orthogonal path:
+Top & Bottom borders for Black (borders with alphabets); Right & Left borders for White (borders with numbers)
+which is shown as follows:
+---------For Black --------------------
+    a b c d e f g h i j k l m n o
+15 | |#| |#| |#| |#| |#|B|#| |#| | 15
+14 |#| |#| |#| |#| |#|W|B| |#| |#| 14
+13 | |#| |#| |#| |#| |B|B|#| |#| | 13
+12 |#| |#| |#| |#| |#|B|#| |#| |#| 12
+11 | |#| |#| |#| |#| |B| |#| |#| | 11
+10 |#| |W|W|#| |#|B|B|B|#|W|W|W|#| 10
+ 9 | |W|W|W| |#|W|B|B|#| |#| |W| | 9
+ 8 |W|W|#|W|W|W|W|B|#| |#| |W|W|#| 8
+ 7 | |#| |#| |B|B|B| |#| |#|W|#| | 7
+ 6 |#|W|B|B|B|B|#| |#|W|#| |W| |#| 6
+ 5 | |B|B|#| |#| |#| |#|W|#| |#| | 5
+ 4 |#|B|#| |#| |#| |#| |#|W|#| |#| 4
+ 3 | |B| |#| |#| |#| |#| |#|W|#| | 3
+ 2 |B|B|#| |#| |#| |#| |#| |#|W|#| 2
+ 1 |B|#| |#| |#| |#| |#| |#| |#| | 1
+    a b c d e f g h i j k l m n o
+-------------------------------------------------------------
+-------For White -------------------------
+    a b c d e f g h i j k l m n o
+15 | |#| |#| |#| |#| |#|B|#| |#| | 15
+14 |#| |#| |#| |#| |#| |B| |#| |#| 14
+13 | |#| |#| |#| |#| |B|B|#| |#| | 13
+12 |#| |#| |#| |#| |B|B|#| |#| |#| 12
+11 | |#| |#| |#| |B|B|#| |#| |#| | 11
+10 |#| |W|W|W|B|B|B|#| |#| |#| |#| 10
+ 9 |W|W|W|#|W|W|B|#| |#| |#| |#| | 9
+ 8 |W|W|#| |#|W|W|N|#| |#| |#| |#| 8
+ 7 | |#| |#| |W|W|W|W|W|B|#| |W| | 7
+ 6 |#| |#| |B|B|W|W|B|W|#|W|W|W|W| 6
+ 5 | |#| |#|B|B| |B|B|W|B|W|W|W| | 5
+ 4 |#| |#| |B| |B|B|W|W|W|W|W| |#| 4
+ 3 | |#| |#|B|#| |#|B|B|W|W| |#| | 3
+ 2 |#| |#| |#| |B| |B|B|#| |#| |#| 2
+ 1 | |#| |#| |#| |#|B|#| |#| |#| | 1
+    a b c d e f g h i j k l m n o
+-------------------------------------------------------------
+
+
+********* How to Play ************
+a. Player with black piece starts first, if P1 has Black piece, the message is displayed as
+
+    a b c d e f g h i j k l m n o
+15 | |#| |#| |#| |#| |#| |#| |#| | 15
+14 |#| |#| |#| |#| |#| |#| |#| |#| 14
+13 | |#| |#| |#| |#| |#| |#| |#| | 13
+12 |#| |#| |#| |#| |#| |#| |#| |#| 12
+11 | |#| |#| |#| |#| |#| |#| |#| | 11
+10 |#| |#| |#| |#| |#| |#| |#| |#| 10
+ 9 | |#| |#| |#| |#| |#| |#| |#| | 9
+ 8 |#| |#| |#| |#| |#| |#| |#| |#| 8
+ 7 | |#| |#| |#| |#| |#| |#| |#| | 7
+ 6 |#| |#| |#| |#| |#| |#| |#| |#| 6
+ 5 | |#| |#| |#| |#| |#| |#| |#| | 5
+ 4 |#| |#| |#| |#| |#| |#| |#| |#| 4
+ 3 | |#| |#| |#| |#| |#| |#| |#| | 3
+ 2 |#| |#| |#| |#| |#| |#| |#| |#| 2
+ 1 | |#| |#| |#| |#| |#| |#| |#| | 1
+    a b c d e f g h i j k l m n o
+-------------------------------------------------------------
+Player 1's turn
+Please enter the coordinates:
+
+b. If P1 wants to fill the position d 8 then enter d 8 in the command window as:
+Please enter the coordinates:	d 8
+The position 'd 8' is now filled with the Black Piece as follows:
+
+    a b c d e f g h i j k l m n o
+15 | |#| |#| |#| |#| |#| |#| |#| | 15
+14 |#| |#| |#| |#| |#| |#| |#| |#| 14
+13 | |#| |#| |#| |#| |#| |#| |#| | 13
+12 |#| |#| |#| |#| |#| |#| |#| |#| 12
+11 | |#| |#| |#| |#| |#| |#| |#| | 11
+10 |#| |#| |#| |#| |#| |#| |#| |#| 10
+ 9 | |#| |#| |#| |#| |#| |#| |#| | 9
+ 8 |#| |#|B|#| |#| |#| |#| |#| |#| 8
+ 7 | |#| |#| |#| |#| |#| |#| |#| | 7
+ 6 |#| |#| |#| |#| |#| |#| |#| |#| 6
+ 5 | |#| |#| |#| |#| |#| |#| |#| | 5
+ 4 |#| |#| |#| |#| |#| |#| |#| |#| 4
+ 3 | |#| |#| |#| |#| |#| |#| |#| | 3
+ 2 |#| |#| |#| |#| |#| |#| |#| |#| 2
+ 1 | |#| |#| |#| |#| |#| |#| |#| | 1
+    a b c d e f g h i j k l m n o
+-------------------------------------------------------------
+
+c. After the first move the Users are asked if they want to use the Pie rule or not.
+If the Pie rule is used, Black Piece is given to Player 2 and White Piece is given to Player 1
+and Player 2 has already taken the move done by Player 1. It becomes now Player 1's turn with
+White Piece.
+Player 2's turn
+Would you like to use Pie Rule? yes/no
+ yes
+    a b c d e f g h i j k l m n o
+15 | |#| |#| |#| |#| |#| |#| |#| | 15
+14 |#| |#| |#| |#| |#| |#| |#| |#| 14
+13 | |#| |#| |#| |#| |#| |#| |#| | 13
+12 |#| |#| |#| |#| |#| |#| |#| |#| 12
+11 | |#| |#| |#| |#| |#| |#| |#| | 11
+10 |#| |#| |#| |#| |#| |#| |#| |#| 10
+ 9 | |#| |#| |#| |#| |#| |#| |#| | 9
+ 8 |#| |#|B|#| |#| |#| |#| |#| |#| 8
+ 7 | |#| |#| |#| |#| |#| |#| |#| | 7
+ 6 |#| |#| |#| |#| |#| |#| |#| |#| 6
+ 5 | |#| |#| |#| |#| |#| |#| |#| | 5
+ 4 |#| |#| |#| |#| |#| |#| |#| |#| 4
+ 3 | |#| |#| |#| |#| |#| |#| |#| | 3
+ 2 |#| |#| |#| |#| |#| |#| |#| |#| 2
+ 1 | |#| |#| |#| |#| |#| |#| |#| | 1
+    a b c d e f g h i j k l m n o
+-------------------------------------------------------------
+Player 1's turn
+Please enter the coordinates:
+
+and the game continues
+
+d. Escorts filling rule is the major rule of the game, where if two diagonal positions are filled with
+same piece, then the positions adjacent have to be filled with same piece, even if it is not vacant.
+The rule varies as per the position color and not Piece colors.
+For Light Positions -- If two diagonal light positions are filled with same piece
+-->|#|W|  == The dark position with --> also gets filled with white |W|W|
+   |W|#|                                                            |W|#|
+Escorts of --> dark position are the light positions immediately behind it and to the right of it
+For Dark Positions -- If two diagonal Dark positions are filled with same piece
+   | |W|  == The dark position with <-- also gets filled with white | |W|
+   |W| |<--                                                         |W|W|
+Escorts of <-- light position are the dark positions immediately above it and to the left of it
+e.g.
+    a b c d e f g h i j k l m n o
+15 | |#| |#| |#| |#| |#| |#| |#| | 15
+14 |#| |#| |#| |#| |#| |#| |#| |#| 14
+13 | |#| |#| |#| |#| |#| |#| |#| | 13
+12 |#| |#| |#| |#| |#| |#| |#| |#| 12
+11 | |#| |#| |#| |#|B|#| |#| |#| | 11
+10 |#| |#| |#| |#|W|#| |#| |#| |#| 10
+ 9 | |#| |W| |#| |#| |#| |#| |#| | 9
+ 8 |#| |#|B|B| |#| |#| |#| |#| |#| 8
+ 7 | |#| |#| |#| |#| |#| |#| |#| | 7
+ 6 |B| |#| |#| |#|W|#| |#| |#| |#| 6
+ 5 | |#| |#| |#| | | |#| |#| |#| | 5
+ 4 |#| |#| |#|W|#| |#| |#| |#| |#| 4
+ 3 |B|#| |#| |#| |#| |#| |#| |#| | 3
+ 2 |W| |#| |#| |#| |#| |#| |#| |#| 2
+ 1 | |#| |#| |#| |#| |#| |#| |#| | 1
+    a b c d e f g h i j k l m n o
+-------------------------------------------------------------
+Let's say 'f 4' and 'h 6' filled, in the next turns if 'g 5' gets filled with same white then
+'g 6' and 'f 5' also gets filled with white.
+    a b c d e f g h i j k l m n o
+15 | |#| |#| |#| |#| |#| |#| |#| | 15
+14 |#| |#| |#| |#| |#| |#| |#| |#| 14
+13 | |#| |#| |#| |#| |#| |#| |#| | 13
+12 |#| |#| |#| |#| |#| |#| |#| |#| 12
+11 | |#| |#| |#| |#|B|#| |#| |#| | 11
+10 |#| |#| |#| |#|W|#| |#| |#| |#| 10
+ 9 | |#| |W| |#| |#| |#| |#| |#| | 9
+ 8 |#| |#|B|B| |#| |#| |#| |#| |#| 8
+ 7 | |#| |#| |#| |#| |#| |#| |#| | 7
+ 6 |B| |#| |#| |W|W|#| |#| |#| |#| 6
+ 5 | |#| |#| |W|W| | |#| |#| |#| | 5
+ 4 |#| |#| |#|W|#| |#| |#| |#| |#| 4
+ 3 |B|#| |#| |#| |#| |#| |#| |#| | 3
+ 2 |W| |#| |#| |#| |#| |#| |#| |#| 2
+ 1 | |#| |#| |#| |#| |#| |#| |#| | 1
+    a b c d e f g h i j k l m n o
+-------------------------------------------------------------
+
+e. Play until an orthogonal path is found
+
+
+************************** Happy Playing *****************************
