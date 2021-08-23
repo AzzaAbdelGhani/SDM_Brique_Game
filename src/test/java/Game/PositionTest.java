@@ -33,12 +33,12 @@ public class PositionTest {
         assertEquals(pos.getPosColor(), Pos_Color.LIGHT);
     }
 
-    /*@ParameterizedTest
-    @CsvSource({"Bln, Bln", "B, B", "W, W"})
+    @ParameterizedTest
+    @CsvSource({"BLANK, BLANK", "BLACK, BLACK", "WHITE, WHITE"})
     public void checkPieceColor(String piece, String expected_piece)
     {
         assertEquals(pos.getPieceColor(), Piece_Color.BLANK);
         pos.setPieceColor(Piece_Color.valueOf(piece));
         assertEquals(pos.getPieceColor().getString(), expected_piece );
-    }*/
+    }
 }
