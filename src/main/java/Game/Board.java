@@ -15,7 +15,10 @@ public class Board {
     //getters
     public int getSize() { return size; }
 
-    public Position getPos(Coordinates coordinates) { return this.grid[coordinates.getRow_idx()][coordinates.getCol_idx()];}
+    public Position getPos(Coordinates coordinates) {
+        if(isValidPos(coordinates)) return this.grid[coordinates.getRow_idx()][coordinates.getCol_idx()];
+        else return new Position(-1,-1);
+    }
 
     public Boolean isValidPos(Coordinates coordinates){
         List<Integer> range = IntStream.range(0,size).boxed().collect(Collectors.toList());
