@@ -4,7 +4,7 @@ import Game.*;
 import javax.swing.*;
 import java.awt.*;
 
-public class PositionPanel extends JPanel {
+public class PositionPanel extends JPanel{
     private JPanel pos;
     private int row;
     private int col;
@@ -57,9 +57,7 @@ public class PositionPanel extends JPanel {
         return this.pos_color;
     }
 
-    public int getRow() {
-        return this.row;
-    }
+    public int getRow() { return this.row; }
 
     public int getCol() {
         return this.col;
