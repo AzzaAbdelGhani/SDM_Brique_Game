@@ -33,12 +33,12 @@ public class Move {
     public void fillEscorts(){
         Pos_Color color = board.getPos(coordinates).getPosColor();
         if(color == Pos_Color.LIGHT){
-            if (isEscortFilled(coordinates.getDiagUp())) fillBoardAndUpdateGraph(coordinates.getUp());
-            if (isEscortFilled(coordinates.getDiagDown())) fillBoardAndUpdateGraph(coordinates.getLeft());
-        }
-        else {
             if (isEscortFilled(coordinates.getDiagUp())) fillBoardAndUpdateGraph(coordinates.getRight());
             if (isEscortFilled(coordinates.getDiagDown())) fillBoardAndUpdateGraph(coordinates.getDown());
+        }
+        else {
+            if (isEscortFilled(coordinates.getDiagUp())) fillBoardAndUpdateGraph(coordinates.getUp());
+            if (isEscortFilled(coordinates.getDiagDown())) fillBoardAndUpdateGraph(coordinates.getLeft());
         }
         
     }
