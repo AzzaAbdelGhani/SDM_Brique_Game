@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import java.util.stream.IntStream;
 
 public class BoardFrame extends JFrame implements MouseListener {
     private JPanel board;
@@ -34,16 +35,9 @@ public class BoardFrame extends JFrame implements MouseListener {
         this.setResizable(false);
         this.setLocationRelativeTo(frame);
 
-        for (int r = 0; r < boardSize ; r++)
-        {
-            for (int c = 0; c < boardSize; c++)
-            {
-                this.grid[r][c] = new PositionPanel(r, c);
-                this.grid[r][c].addMouseListener(this);
-            }
-        }
-
-        for (int r = boardSize-1; r >= 0; r--) { for(int c = 0; c < boardSize; c++){ board.add(this.grid[r][c]); } }
+        IntStream.range(0,boardSize).forEach(i->IntStream.range(0,boardSize).forEach(j->this.grid[i][j] = new PositionPanel(i,j)));
+        IntStream.range(0,boardSize).forEach(i->IntStream.range(0,boardSize).forEach(j->this.grid[i][j].addMouseListener(this)));
+        IntStream.range(0,boardSize).forEach(i->IntStream.range(0,boardSize).forEach(j->board.add(this.grid[boardSize-1-i][j])));
 
         this.add(board, BorderLayout.CENTER);
         this.setVisible(true);
@@ -125,12 +119,12 @@ public class BoardFrame extends JFrame implements MouseListener {
         Piece_Color current = this.grid[i][j].getPieceColor();
         Pos_Color color = this.grid[i][j].getPositionColor();
         if ( i != boardSize-1 && j != boardSize-1 ) {
-            if (current == this.grid[i+1][j+1].getPieceColor() && color == Pos_Color.LIGHT) { this.grid[i][j+1].setPieceColor(current); }
-            if (current == this.grid[i+1][j+1].getPieceColor() && color == Pos_Color.DARK) { this.grid[i+1][j].setPieceColor(current); }
+            if (current == this.grid[i+1][j+1].getPieceColor() && color == Pos_Color.LIGHT) { this.grid[i+1][j].setPieceColor(current); }
+            if (current == this.grid[i+1][j+1].getPieceColor() && color == Pos_Color.DARK) { this.grid[i][j+1].setPieceColor(current); }
         }
         if ( i != 0 && j != 0 ){
-            if (current == this.grid[i-1][j-1].getPieceColor() && color == Pos_Color.LIGHT) { this.grid[i-1][j].setPieceColor(current); }
-            if (current == this.grid[i-1][j-1].getPieceColor() && color == Pos_Color.DARK){ this.grid[i][j-1].setPieceColor(current); }
+            if (current == this.grid[i-1][j-1].getPieceColor() && color == Pos_Color.LIGHT) { this.grid[i][j-1].setPieceColor(current); }
+            if (current == this.grid[i-1][j-1].getPieceColor() && color == Pos_Color.DARK){ this.grid[i-1][j].setPieceColor(current); }
         }
     }
 }
