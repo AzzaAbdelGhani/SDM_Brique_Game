@@ -1,9 +1,8 @@
+package Game;
 
-import Game.*;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 public class GraphTest {
     private final Graph g = new Graph(Piece_Color.BLACK);
     private Board board = new Board();

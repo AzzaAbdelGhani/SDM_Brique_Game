@@ -1,7 +1,8 @@
-import Game.Piece_Color;
-import Game.Player;
+package Game;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
 public class PlayerTest {
     private final Player p = new Player("test", Piece_Color.BLACK);
     @Test

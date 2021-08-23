@@ -1,6 +1,5 @@
-import Game.Piece_Color;
-import Game.Pos_Color;
-import Game.Position;
+package Game;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

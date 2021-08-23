@@ -1,8 +1,7 @@
-import Game.Board;
-import Game.Coordinates;
-import Game.Position;
+package Game;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BoardTest {
     private final Board board = new Board();

@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 public class BoardFrame extends JFrame implements MouseListener {
     private JPanel board;

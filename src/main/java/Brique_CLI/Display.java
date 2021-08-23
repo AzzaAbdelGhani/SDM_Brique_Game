@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Display {
     private static Scanner sc = new Scanner(System.in);
-
+    public Display() {}
     public static void printRules(Game game){
         System.out.println("The Brique Game consists of two players: Player 1, Player 2 with two Pieces - Black and White" );
         System.out.println("By default Player 1 has the Black Piece  and Player 2 has White Piece");

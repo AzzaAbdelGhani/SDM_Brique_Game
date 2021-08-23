@@ -1,9 +1,6 @@
-import Game.Game;
-import Game.Player;
-import Game.Piece_Color;
-import Game.Status;
-import Game.Board;
+package Game;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,9 +20,9 @@ public class GameTest {
     @Test
     public void checkGameStatus()
     {
-        assertEquals(g.getStatus(), Status.ON);
+        Assertions.assertEquals(g.getStatus(), Status.ON);
         g.setStatus(Status.OVER);
-        assertEquals(g.getStatus(), Status.OVER);
+        Assertions.assertEquals(g.getStatus(), Status.OVER);
     }
     @Test
     public void checkPlayersOfSamePieceColors()
