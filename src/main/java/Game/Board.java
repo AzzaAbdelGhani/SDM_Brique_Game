@@ -1,5 +1,7 @@
 package Game;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -24,6 +26,26 @@ public class Board {
         List<Integer> range = IntStream.range(0,size).boxed().collect(Collectors.toList());
         if(range.contains(coordinates.getRow_idx()) && range.contains(coordinates.getCol_idx())) { return Boolean.TRUE; }
         return Boolean.FALSE;
+    }
+
+    public ArrayList<List<Integer>> getBorders(Piece_Color color){
+        ArrayList<List<Integer>> borders = new ArrayList<List<Integer>>();
+        if (color == Piece_Color.BLACK)
+        {
+            List<Integer> upBorder = IntStream.rangeClosed(0,14).boxed().collect(Collectors.toList());
+            List<Integer> downBorder = IntStream.rangeClosed(210,224).boxed().collect(Collectors.toList());
+            borders.add(0,upBorder);
+            borders.add(1,downBorder);
+        }
+        else if (color == Piece_Color.WHITE)
+        {
+            List<Integer> leftBorder = IntStream.iterate(0,i -> i+15).limit(15).boxed().collect(Collectors.toList());
+            List<Integer> rightBorder = IntStream.iterate(14,i -> i+15).limit(15).boxed().collect(Collectors.toList());
+            borders.add(0,leftBorder);
+            borders.add(1,rightBorder);
+            borders.add(1,rightBorder);
+        }
+        return borders;
     }
 
 }

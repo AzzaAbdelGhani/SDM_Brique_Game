@@ -60,39 +60,6 @@ public class Graph {
         }
     }
 
-    private ArrayList<List<Integer>> getBorders()
-    {
-        ArrayList<List<Integer>> borders = new ArrayList<List<Integer>>();
-        for (int i = 0; i < 2; i++)
-        {
-            ArrayList<Integer> new_list = new ArrayList<>();
-            borders.add(i,new_list);
-        }
-        if (this.pieceColor == Piece_Color.BLACK)
-        {
-            ArrayList<Integer> up = new ArrayList<Integer>();
-            ArrayList<Integer> down = new ArrayList<Integer>();
-            for (int i = 0, j = 210; i < 15 && j < 225; i++, j++) {
-                up.add(i);
-                down.add(j);
-            }
-            borders.add(0,up);
-            borders.add(1,down);
-        }
-        else if (this.pieceColor == Piece_Color.WHITE)
-        {
-            ArrayList<Integer> right = new ArrayList<Integer>();
-            ArrayList<Integer> left = new ArrayList<Integer>();
-            for (int i = 0, j = 14; i < 211 && j < 225; i+=15, j+=15) {
-                left.add(i);
-                right.add(j);
-            }
-            borders.add(0,left);
-            borders.add(1,right);
-        }
-
-        return borders;
-    }
 
     private void DFS(Integer e, ArrayList<Integer> visited)
     {
@@ -106,7 +73,7 @@ public class Graph {
 
     public boolean areBordersConnected()
     {
-        ArrayList<List<Integer>> borders = getBorders();
+        ArrayList<List<Integer>> borders = this.board.getBorders(this.pieceColor);
         ArrayList<Integer> visited = new ArrayList<Integer>();
         for(Integer e : borders.get(0))
         {
