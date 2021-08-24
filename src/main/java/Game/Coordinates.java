@@ -13,13 +13,7 @@ public class Coordinates {
 
     public int getCol_idx() { return this.col_idx; }
 
-    public Coordinates getUp() { return new Coordinates(this.row_idx, this.col_idx+1); }
-
-    public Coordinates getDown() { return new Coordinates(this.row_idx, this.col_idx-1); }
-
-    public Coordinates getLeft() { return new Coordinates(this.row_idx-1, this.col_idx); }
-
-    public Coordinates getRight() { return new Coordinates(this.row_idx+1, this.col_idx); }
+    public Coordinates getNeighbours(int i, int j){return new Coordinates(this.row_idx+i, this.col_idx+j);}
 
     public Coordinates getDiagUp() { return new Coordinates(this.row_idx+1, this.col_idx+1); }
 

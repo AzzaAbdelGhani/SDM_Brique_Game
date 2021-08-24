@@ -50,11 +50,11 @@ public class Graph {
     private void check_neighbours(Coordinates coordinates)
     {
         ArrayList<Coordinates> neighbours = new ArrayList<>();
-        neighbours.add(coordinates.getUp());
-        neighbours.add(coordinates.getDown());
-        neighbours.add(coordinates.getLeft());
-        neighbours.add(coordinates.getRight());
-
+        int[] num_neighbours = {1,-1};
+        for (int i : num_neighbours) {
+            neighbours.add(coordinates.getNeighbours(i,0));
+            neighbours.add(coordinates.getNeighbours(0,i));
+        }
         for(Coordinates n:neighbours) {
             if(isNeighbourFilled(n)) setEdge(get_Index(coordinates),get_Index(n));
         }
