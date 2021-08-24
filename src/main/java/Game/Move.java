@@ -24,7 +24,7 @@ public class Move {
         currentPlayer.getGraph().updateBoard(board,coordinates);
     }
 
-    private boolean isEscortFilled(Coordinates coordinates){
+    protected boolean isEscortFilled(Coordinates coordinates){
         if (!board.isValidPos(coordinates)) return Boolean.FALSE;
         if (board.getPos(coordinates).getPieceColor() == currentPlayer.getColor()) return Boolean.TRUE;
         return Boolean.FALSE;
@@ -40,7 +40,6 @@ public class Move {
             if (isEscortFilled(coordinates.getDiagUp())) fillBoardAndUpdateGraph(coordinates.getUp());
             if (isEscortFilled(coordinates.getDiagDown())) fillBoardAndUpdateGraph(coordinates.getLeft());
         }
-        
     }
     public void changePlayerTurn() {
         currentPlayer.setActive(Boolean.FALSE);
