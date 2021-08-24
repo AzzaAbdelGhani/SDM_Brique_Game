@@ -123,7 +123,7 @@ public class MoveTest {
         Board board = new Board();
         Move move = new Move(board, P1, P2);
         assertTrue(move.makeMove(coordinates));
-        assertEquals(this.board.getPos(coordinates).getPieceColor(), Piece_Color.BLACK);
+        assertEquals(board.getPos(coordinates).getPieceColor(), Piece_Color.BLACK);
     }
 
     @ParameterizedTest
