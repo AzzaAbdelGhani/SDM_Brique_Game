@@ -85,19 +85,4 @@ public class WelcomeFrame extends JFrame implements ActionListener {
         }
 
     }
-
-    public static void main (String args[])
-    {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    WelcomeFrame g = new WelcomeFrame();
-                    g.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-    }
 }
