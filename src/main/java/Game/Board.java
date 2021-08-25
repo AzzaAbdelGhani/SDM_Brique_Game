@@ -43,4 +43,19 @@ public class Board {
         return borders;
     }
 
+    protected boolean isANeighbourFilled(Coordinates coordinates, Piece_Color color){
+        if (!isValidPos(coordinates)) return Boolean.FALSE;
+        if (getPos(coordinates).getPieceColor() == color) return Boolean.TRUE;
+        return Boolean.FALSE;
+    }
+
+    public ArrayList<Coordinates> fillPositionAndGetEscorts(Coordinates coordinates, Piece_Color pcolor){
+        ArrayList <Coordinates> escortList = getPos(coordinates).getEscorts();
+        ArrayList <Coordinates> escortToBeFilled = new ArrayList<>();
+        escortToBeFilled.add(coordinates);
+        if (isANeighbourFilled(coordinates.getNeighbours(1,1), pcolor)) escortToBeFilled.add(escortList.get(0));
+        if (isANeighbourFilled(coordinates.getNeighbours(-1,-1), pcolor)) escortToBeFilled.add(escortList.get(1));
+        for (Coordinates e: escortToBeFilled) getPos(e).setPieceColor(pcolor);
+        return escortToBeFilled;
+    }
 }

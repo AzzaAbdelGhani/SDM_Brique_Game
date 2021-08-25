@@ -1,6 +1,11 @@
 package Game;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.stream.IntStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GraphTest {
@@ -26,6 +31,10 @@ public class GraphTest {
     @Test
     public void checkConnectionBetweenBorders()
     {
+        //ArrayList<Coordinates> nodeList = new ArrayList<>();
+        //int[] array = new Random().ints(15, 0, 15).toArray();
+        //IntStream.range(0,15).forEach(i->IntStream.range(6,9).forEach(j->g.add_node(new Coordinates(i,j))));
+        //for(int i:array) { g.add_node(new Coordinates(i, 8));}
         g.add_node(new Coordinates(10, 7));
         g.add_node(new Coordinates(8, 7));
         g.add_node(new Coordinates(0, 7));

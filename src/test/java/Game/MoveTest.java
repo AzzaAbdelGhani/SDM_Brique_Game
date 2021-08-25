@@ -13,23 +13,6 @@ public class MoveTest {
     private Piece_Color P1_Color = P1.getColor();
     private Move move = new Move(board, P1, P2);
 
-    @ParameterizedTest
-    @CsvSource({"1,3", "4, 5", "6, 8", "10,1", "0,0", "14, 14", "0,7", "14, 12"})
-    public void checkIfBoardIsUpdated(int row_id, int col_id)
-    {
-        Coordinates co = new Coordinates(row_id, col_id);
-        move.fillBoardAndUpdateGraph(co);
-        assertEquals(board.getPos(co).getPieceColor(), P1_Color);
-    }
-
-    @ParameterizedTest
-    @CsvSource({"1,9", "5, 1", "10, 4", "0, 14", "9, 3"})
-    public void checkIfAPositionIsFilledWithCurrentColor(int row_id, int col_id)
-    {
-        Coordinates co = new Coordinates(row_id, col_id);
-        move.fillBoardAndUpdateGraph(co);
-        assertTrue(move.isEscortFilled(co));
-    }
 
     @ParameterizedTest
     @CsvSource({"1,7", "10,6", "4,12", "8,10", "3,9"})

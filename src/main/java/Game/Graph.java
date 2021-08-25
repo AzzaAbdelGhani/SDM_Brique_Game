@@ -37,13 +37,6 @@ public class Graph {
         Adjacency_List.get(src).add(des);
     }
 
-    private boolean isNeighbourFilled(Coordinates coordinates){
-        if(board.isValidPos(coordinates)){
-            if(board.getPos(coordinates).getPieceColor() == pieceColor) return Boolean.TRUE;
-        }
-        return Boolean.FALSE;
-    }
-
     private void check_neighbours(Coordinates coordinates)
     {
         ArrayList<Coordinates> neighbours = new ArrayList<>();
@@ -53,7 +46,7 @@ public class Graph {
             neighbours.add(coordinates.getNeighbours(0,i));
         }
         for(Coordinates n:neighbours) {
-            if(isNeighbourFilled(n)) setEdge(get_Index(coordinates),get_Index(n));
+            if(board.isANeighbourFilled(n,pieceColor)) setEdge(get_Index(coordinates),get_Index(n));
         }
     }
 
