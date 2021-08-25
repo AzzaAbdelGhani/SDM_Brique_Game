@@ -12,7 +12,27 @@ import java.util.Scanner;
 public class Display {
     private static Scanner sc = new Scanner(System.in);
 
-    public Display() {}
+    public static String displayAMsgAndGetUI(String disp) {
+        System.out.println(disp);
+        return sc.next();
+    }
+
+    public static Boolean IsInputYes(@NotNull String a) {
+        if (a.equals("y") || a.equals("Y") || a.equalsIgnoreCase("yes")) return Boolean.TRUE;
+        else if(a.equals("n") || a.equals("N") || a.equalsIgnoreCase("no")) return Boolean.FALSE;
+        else {
+            System.out.println("Entered a different response than yes/no, response by default considered as no");
+            return Boolean.FALSE;
+        }
+    }
+
+    public static void printRules() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader("BriqueRules.txt"));
+        String line;
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+        }
+    }
 
     public static void gameWelcomeMessage(Player P1, Player P2) throws IOException {
         String a =  Display.displayAMsgAndGetUI("Welcome to Brique Game \n Would you like to know the Game Rules (y/n)?");
@@ -55,28 +75,6 @@ public class Display {
             System.out.println("Congratulations!!! "+ PlayerName + " WINS !!!");
         else
             System.out.println(status.getString());
-    }
-
-    public static String displayAMsgAndGetUI(String disp) {
-        System.out.println(disp);
-        return sc.next();
-    }
-
-    public static Boolean IsInputYes(@NotNull String a) {
-        if (a.equals("y") || a.equals("Y") || a.equalsIgnoreCase("yes")) return Boolean.TRUE;
-        else if(a.equals("n") || a.equals("N") || a.equalsIgnoreCase("no")) return Boolean.FALSE;
-        else {
-            System.out.println("Entered a different response than yes/no, response by default considered as no");
-            return Boolean.FALSE;
-        }
-    }
-
-    public static void printRules() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("BriqueRules.txt"));
-        String line;
-        while ((line = br.readLine()) != null) {
-            System.out.println(line);
-        }
     }
 
     public static void printBoard(@NotNull Board board){
