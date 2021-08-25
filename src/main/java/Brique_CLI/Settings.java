@@ -3,10 +3,10 @@ import Game.*;
 import java.util.Scanner;
 
 public class Settings {
+    static Scanner scanner = new Scanner(System.in);
 
     public static void changeSettings(Player p1, Player p2)
     {
-        Scanner scanner = new Scanner(System.in);
         Piece_Color color1, color2;
         System.out.println("Please Enter the first player's name : ");
         String name1 = scanner.next();
