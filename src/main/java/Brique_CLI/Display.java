@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Display {
-    private static Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
 
     public static String displayAMsgAndGetUI(String disp) {
         System.out.println(disp);
@@ -18,8 +18,8 @@ public class Display {
     }
 
     public static Boolean IsInputYes(@NotNull String a) {
-        if (a.equals("y") || a.equals("Y") || a.equalsIgnoreCase("yes")) return Boolean.TRUE;
-        else if(a.equals("n") || a.equals("N") || a.equalsIgnoreCase("no")) return Boolean.FALSE;
+        if (a.equalsIgnoreCase("y")  || a.equalsIgnoreCase("yes")) return Boolean.TRUE;
+        else if(a.equalsIgnoreCase("n")  || a.equalsIgnoreCase("no")) return Boolean.FALSE;
         else {
             System.out.println("Entered a different response than yes/no, response by default considered as no");
             return Boolean.FALSE;
