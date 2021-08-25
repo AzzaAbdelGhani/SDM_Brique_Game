@@ -33,12 +33,12 @@ public class Move {
     public void fillEscorts(){
         Pos_Color color = board.getPos(coordinates).getPosColor();
         if(color == Pos_Color.LIGHT){
-            if (isEscortFilled(coordinates.getDiagUp())) fillBoardAndUpdateGraph(coordinates.getNeighbours(1,0));
-            if (isEscortFilled(coordinates.getDiagDown())) fillBoardAndUpdateGraph(coordinates.getNeighbours(0,-1));
+            if (isEscortFilled(coordinates.getNeighbours(1,1))) fillBoardAndUpdateGraph(coordinates.getNeighbours(1,0));
+            if (isEscortFilled(coordinates.getNeighbours(-1,-1))) fillBoardAndUpdateGraph(coordinates.getNeighbours(0,-1));
         }
         else {
-            if (isEscortFilled(coordinates.getDiagUp())) fillBoardAndUpdateGraph(coordinates.getNeighbours(0,1));
-            if (isEscortFilled(coordinates.getDiagDown())) fillBoardAndUpdateGraph(coordinates.getNeighbours(-1,0));
+            if (isEscortFilled(coordinates.getNeighbours(1,1))) fillBoardAndUpdateGraph(coordinates.getNeighbours(0,1));
+            if (isEscortFilled(coordinates.getNeighbours(-1,-1))) fillBoardAndUpdateGraph(coordinates.getNeighbours(-1,0));
         }
     }
     public void changePlayerTurn() {

@@ -37,8 +37,8 @@ public class MoveTest {
     {
         Coordinates co = new Coordinates(row_id, col_id);
         move.makeMove(co);
-        move.makeMove(co.getDiagUp());
-        move.makeMove(co.getDiagDown());
+        move.makeMove(co.getNeighbours(1,1));
+        move.makeMove(co.getNeighbours(-1,-1));
         assertEquals(board.getPos(co.getNeighbours(1,0)).getPieceColor(), P1_Color);
         assertEquals(board.getPos(co.getNeighbours(0,-1)).getPieceColor(), P1_Color);
     }
@@ -51,7 +51,7 @@ public class MoveTest {
         Move move = new Move(board, P1, P2);
         Coordinates co = new Coordinates(row_id, col_id);
         move.makeMove(co);
-        move.makeMove(co.getDiagUp());
+        move.makeMove(co.getNeighbours(1,1));
         assertEquals(board.getPos(co.getNeighbours(1,0)).getPieceColor(), P1_Color);
     }
 
@@ -63,7 +63,7 @@ public class MoveTest {
         Move move = new Move(board, P1, P2);
         Coordinates co = new Coordinates(row_id, col_id);
         move.makeMove(co);
-        move.makeMove(co.getDiagDown());
+        move.makeMove(co.getNeighbours(-1,-1));
         assertEquals(board.getPos(co.getNeighbours(0,-1)).getPieceColor(), P1_Color);
     }
 
@@ -73,8 +73,8 @@ public class MoveTest {
     {
         Coordinates co = new Coordinates(row_id, col_id);
         move.makeMove(co);
-        move.makeMove(co.getDiagUp());
-        move.makeMove(co.getDiagDown());
+        move.makeMove(co.getNeighbours(1,1));
+        move.makeMove(co.getNeighbours(-1,-1));
         assertEquals(board.getPos(co.getNeighbours(0,1)).getPieceColor(), P1_Color);
         assertEquals(board.getPos(co.getNeighbours(-1,0)).getPieceColor(), P1_Color);
     }
@@ -87,7 +87,7 @@ public class MoveTest {
         Move move = new Move(board, P1, P2);
         Coordinates co = new Coordinates(row_id, col_id);
         move.makeMove(co);
-        move.makeMove(co.getDiagUp());
+        move.makeMove(co.getNeighbours(1,1));
         assertEquals(board.getPos(co.getNeighbours(0,1)).getPieceColor(), P1_Color);
     }
 
@@ -99,7 +99,7 @@ public class MoveTest {
         Move move = new Move(board, P1, P2);
         Coordinates co = new Coordinates(row_id, col_id);
         move.makeMove(co);
-        move.makeMove(co.getDiagDown());
+        move.makeMove(co.getNeighbours(-1,-1));
         assertEquals(board.getPos(co.getNeighbours(-1,0)).getPieceColor(), P1_Color);
     }
 

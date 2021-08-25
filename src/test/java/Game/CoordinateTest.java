@@ -57,7 +57,7 @@ public class CoordinateTest {
     @CsvSource({"1, 1 , 2, 2 ", "10, 20, 11, 21", "-4, 4, -3, 5", "15, 5, 16, 6"})
     public void checkGetDiagUpCoordinate(int row_id, int col_id, int expected_row_id, int expected_col_id)
     {
-        Coordinates diagUp = (new Coordinates(row_id, col_id)).getDiagUp();
+        Coordinates diagUp = (new Coordinates(row_id, col_id)).getNeighbours(1,1);
         assertEquals(diagUp.getRow_idx(), expected_row_id);
         assertEquals(diagUp.getCol_idx(), expected_col_id);
     }
@@ -66,7 +66,7 @@ public class CoordinateTest {
     @CsvSource({"6, 6, 5, 5", "3, 1, 2, 0", "14, 10, 13, 9", "8, 12, 7, 11"})
     public void checkGetDiagDownCoordinate(int row_id, int col_id, int expected_row_id, int expected_col_id)
     {
-        Coordinates diagDown = (new Coordinates(row_id, col_id)).getDiagDown();
+        Coordinates diagDown = (new Coordinates(row_id, col_id)).getNeighbours(-1,-1);
         assertEquals(diagDown.getRow_idx(), expected_row_id);
         assertEquals(diagDown.getCol_idx(), expected_col_id);
     }
