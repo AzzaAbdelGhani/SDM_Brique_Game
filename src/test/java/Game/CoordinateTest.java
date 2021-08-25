@@ -21,7 +21,7 @@ public class CoordinateTest {
     @CsvSource({"4, 6, 4, 7", "8, 17, 8, 18", "-5, -3, -5, -2", "19, 23, 19, 24"})
     public void checkGetUpCoordinate(int row_id, int col_id, int expected_row_id, int expected_col_id)
     {
-        Coordinates up = (new Coordinates(row_id, col_id)).getUp();
+        Coordinates up = (new Coordinates(row_id, col_id)).getNeighbours(0,1);
         assertEquals(up.getRow_idx(), expected_row_id);
         assertEquals(up.getCol_idx(), expected_col_id);
     }
@@ -30,7 +30,7 @@ public class CoordinateTest {
     @CsvSource({"2, 6, 2, 5", "9, 1, 9, 0", "18, -1, 18, -2", "4, 20, 4, 19"})
     public void checkGetDownCoordinate(int row_id, int col_id, int expected_row_id, int expected_col_id)
     {
-        Coordinates down = (new Coordinates(row_id, col_id)).getDown();
+        Coordinates down = (new Coordinates(row_id, col_id)).getNeighbours(0,-1);
         assertEquals(down.getRow_idx(), expected_row_id);
         assertEquals(down.getCol_idx(), expected_col_id);
     }
@@ -39,7 +39,7 @@ public class CoordinateTest {
     @CsvSource({"5, 8, 4, 8", "13, 5, 12, 5", "-5, 14, -6, 14", "10, 14, 9, 14"})
     public void checkGetLeftCoordinate(int row_id, int col_id, int expected_row_id, int expected_col_id)
     {
-        Coordinates left = (new Coordinates(row_id, col_id)).getLeft();
+        Coordinates left = (new Coordinates(row_id, col_id)).getNeighbours(-1,0);
         assertEquals(left.getRow_idx(), expected_row_id);
         assertEquals(left.getCol_idx(), expected_col_id);
     }
@@ -48,7 +48,7 @@ public class CoordinateTest {
     @CsvSource({"2, 6, 3, 6", "7, 8, 8, 8", "10, 28, 11, 28", "12, 18, 13, 18"})
     public void checkGetRightCoordinate(int row_id, int col_id, int expected_row_id, int expected_col_id)
     {
-        Coordinates right = (new Coordinates(row_id, col_id)).getRight();
+        Coordinates right = (new Coordinates(row_id, col_id)).getNeighbours(1,0);
         assertEquals(right.getRow_idx(), expected_row_id);
         assertEquals(right.getCol_idx(), expected_col_id);
     }

@@ -50,49 +50,16 @@ public class Graph {
     private void check_neighbours(Coordinates coordinates)
     {
         ArrayList<Coordinates> neighbours = new ArrayList<>();
-        neighbours.add(coordinates.getUp());
-        neighbours.add(coordinates.getDown());
-        neighbours.add(coordinates.getLeft());
-        neighbours.add(coordinates.getRight());
-
+        int[] num_neighbours = {1,-1};
+        for (int i : num_neighbours) {
+            neighbours.add(coordinates.getNeighbours(i,0));
+            neighbours.add(coordinates.getNeighbours(0,i));
+        }
         for(Coordinates n:neighbours) {
             if(isNeighbourFilled(n)) setEdge(get_Index(coordinates),get_Index(n));
         }
     }
 
-    private ArrayList<List<Integer>> getBorders()
-    {
-        ArrayList<List<Integer>> borders = new ArrayList<List<Integer>>();
-        for (int i = 0; i < 2; i++)
-        {
-            ArrayList<Integer> new_list = new ArrayList<>();
-            borders.add(i,new_list);
-        }
-        if (this.pieceColor == Piece_Color.BLACK)
-        {
-            ArrayList<Integer> up = new ArrayList<Integer>();
-            ArrayList<Integer> down = new ArrayList<Integer>();
-            for (int i = 0, j = 210; i < 15 && j < 225; i++, j++) {
-                up.add(i);
-                down.add(j);
-            }
-            borders.add(0,up);
-            borders.add(1,down);
-        }
-        else if (this.pieceColor == Piece_Color.WHITE)
-        {
-            ArrayList<Integer> right = new ArrayList<Integer>();
-            ArrayList<Integer> left = new ArrayList<Integer>();
-            for (int i = 0, j = 14; i < 211 && j < 225; i+=15, j+=15) {
-                left.add(i);
-                right.add(j);
-            }
-            borders.add(0,left);
-            borders.add(1,right);
-        }
-
-        return borders;
-    }
 
     private void DFS(Integer e, ArrayList<Integer> visited)
     {
@@ -106,7 +73,7 @@ public class Graph {
 
     public boolean areBordersConnected()
     {
-        ArrayList<List<Integer>> borders = getBorders();
+        ArrayList<List<Integer>> borders = this.board.getBorders(this.pieceColor);
         ArrayList<Integer> visited = new ArrayList<Integer>();
         for(Integer e : borders.get(0))
         {
