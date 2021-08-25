@@ -29,16 +29,16 @@ public class Board {
     }
 
     public ArrayList<List<Integer>> getBorders(Piece_Color color){
-        ArrayList<List<Integer>> borders = new ArrayList<List<Integer>>();
+        ArrayList<List<Integer>> borders = new ArrayList<>();
         if (color == Piece_Color.BLACK)
         {
-            borders.add(0,IntStream.rangeClosed(0,14).boxed().collect(Collectors.toList()));
-            borders.add(1,IntStream.rangeClosed(210,224).boxed().collect(Collectors.toList()));
+            borders.add(0,IntStream.range(0,size).boxed().collect(Collectors.toList()));
+            borders.add(1,IntStream.range(size*size-size,size*size).boxed().collect(Collectors.toList()));
         }
         else if (color == Piece_Color.WHITE)
         {
-            borders.add(0,IntStream.iterate(0,i -> i+15).limit(15).boxed().collect(Collectors.toList()));
-            borders.add(1,IntStream.iterate(14,i -> i+15).limit(15).boxed().collect(Collectors.toList()));
+            borders.add(0,IntStream.iterate(0,i -> i+size).limit(size).boxed().collect(Collectors.toList()));
+            borders.add(1,IntStream.iterate(size-1,i -> i+size).limit(size).boxed().collect(Collectors.toList()));
         }
         return borders;
     }
