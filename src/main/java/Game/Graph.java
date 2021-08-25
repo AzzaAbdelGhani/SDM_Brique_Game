@@ -2,21 +2,18 @@ package Game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Graph {
-    public final List<List<Integer>> Adjacency_List;
+    public final List<List<Integer>> Adjacency_List = new ArrayList<>();
     private Piece_Color pieceColor;
     private Board board = new Board();
+    private int listSize = board.getSize()*board.getSize();
 
     public Graph(Piece_Color pieceColor)
     {
         this.pieceColor = pieceColor;
-        Adjacency_List = new ArrayList<List<Integer>>();
-        for (int i =0; i < 255 ; i++)
-        {
-            ArrayList<Integer> new_list = new ArrayList<>();
-            Adjacency_List.add(i, new_list);
-        }
+        IntStream.range(0,listSize).forEach(i->Adjacency_List.add(i, new ArrayList<>()));
     }
 
     public void updateBoard(Board board, Coordinates coordinates)
@@ -50,8 +47,8 @@ public class Graph {
     private void check_neighbours(Coordinates coordinates)
     {
         ArrayList<Coordinates> neighbours = new ArrayList<>();
-        int[] num_neighbours = {1,-1};
-        for (int i : num_neighbours) {
+        int[] orthogonal_neighbours = {1,-1};
+        for (int i : orthogonal_neighbours) {
             neighbours.add(coordinates.getNeighbours(i,0));
             neighbours.add(coordinates.getNeighbours(0,i));
         }
@@ -74,7 +71,7 @@ public class Graph {
     public boolean areBordersConnected()
     {
         ArrayList<List<Integer>> borders = this.board.getBorders(this.pieceColor);
-        ArrayList<Integer> visited = new ArrayList<Integer>();
+        ArrayList<Integer> visited = new ArrayList<>();
         for(Integer e : borders.get(0))
         {
             if (Adjacency_List.get(e).contains(e))
@@ -89,20 +86,6 @@ public class Graph {
             }
         }
         return false;
-    }
-
-    public void printGraph()
-    {
-        System.out.println ("Adjacency List for the graph \n");
-        for (List<Integer> l : Adjacency_List)
-        {
-            if(!l.isEmpty()) {
-                for (int i = 0; i < l.size(); i++) {
-                    System.out.print("->" + l.get(i));
-                }
-                System.out.print("\n");
-            }
-        }
     }
 
 }

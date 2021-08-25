@@ -15,7 +15,7 @@ public class Brique_Game {
             System.out.println("Please enter cli or gui : ");
             input = scanner.next();
         }
-        if (input.equals("cli")) { LaunchGame.Play(); }
+        if (input.equalsIgnoreCase("cli")) { LaunchGame.Play(); }
         else
         {
             EventQueue.invokeLater(() -> {
